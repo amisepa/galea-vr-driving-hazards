@@ -1,0 +1,183 @@
+[23:29:37] loaded N = 16, 12 channels
+Baseline window -3000 to -2000 ms (249 samples)
+
+Condition difference IN THE BASELINE WINDOW (Cohen d per channel):
+  Fp1   d = +0.293
+  Fp2   d = +0.005
+  F1    d = -0.016
+  F2    d = +0.153
+  CZ    d = +0.138
+  C3    d = +0.093
+  C4    d = +0.434
+  PZ    d = -0.112
+  P3    d = +0.373
+  P4    d = -0.092
+  O1    d = +0.425
+  O2    d = +0.387
+max |d| = 0.434  (small values => no collinearity concern)
+
+[23:29:37] ===== post-stimulus [0 1200] ms =====
+   channel  1/12 (Fp1) done
+   channel  2/12 (Fp2) done
+   channel  3/12 (F1) done
+   channel  4/12 (F2) done
+   channel  5/12 (CZ) done
+   channel  6/12 (C3) done
+   channel  7/12 (C4) done
+   channel  8/12 (PZ) done
+   channel  9/12 (P3) done
+   channel 10/12 (P4) done
+   channel 11/12 (O1) done
+   channel 12/12 (O2) done
+Average number of neighors per channel: 4.7 
+
+Cluster Summary (Merged mode):
+Cluster 1: 274 to 315 ms (4 channels). Peak: CZ at 286 ms (t = 3.04; d_z = 0.76)
+Cluster 2: 383 to 544 ms (11 channels). Peak: C3 at 448 ms (t = -5.21; d_z = -1.30)
+Cluster 3: 835 to 895 ms (3 channels). Peak: P3 at 895 ms (t = 3.36; d_z = 0.84)
+[23:30:07] post-stim: 3 cluster(s)
+    Cluster    Start      End       Peak     Tvalue_full    Tvalue    ES_full      ES      ES_metric    df_used    Channel     Polarity     NumElectrodes
+    _______    ______    ______    ______    ___________    ______    _______    ______    _________    _______    _______    __________    _____________
+
+       1       274.19    314.52    286.29       3.0436       3.044     0.7609     0.761       "d"         15        "CZ"      "Positive"          4      
+       2       383.06    544.35    447.58      -5.2135      -5.214    -1.3034    -1.303       "d"         15        "C3"      "Negative"         11      
+       3       834.68    895.16    895.16       3.3568       3.357    0.83919     0.839       "d"         15        "P3"      "Positive"          3      
+
+[23:30:07] ===== pre-stimulus [-1200 -1] ms =====
+   channel  1/12 (Fp1) done
+   channel  2/12 (Fp2) done
+   channel  3/12 (F1) done
+   channel  4/12 (F2) done
+   channel  5/12 (CZ) done
+   channel  6/12 (C3) done
+   channel  7/12 (C4) done
+   channel  8/12 (PZ) done
+   channel  9/12 (P3) done
+   channel 10/12 (P4) done
+   channel 11/12 (O1) done
+   channel 12/12 (O2) done
+Average number of neighors per channel: 4.7 
+[23:30:37] pre-stim: NO cluster survived correction
+[23:30:37] ALDAY SENSITIVITY ANALYSIS COMPLETE
+[12:20:59] loaded N = 16, 12 channels
+Baseline window -3000 to -2000 ms (249 samples)
+
+Condition difference IN THE BASELINE WINDOW (Cohen d per channel):
+  Fp1   d = +0.293
+  Fp2   d = +0.005
+  F1    d = -0.016
+  F2    d = +0.153
+  CZ    d = +0.138
+  C3    d = +0.093
+  C4    d = +0.434
+  PZ    d = -0.112
+  P3    d = +0.373
+  P4    d = -0.092
+  O1    d = +0.425
+  O2    d = +0.387
+max |d| = 0.434  (small values => no collinearity concern)
+
+[12:20:59] ===== post-stimulus [0 1200] ms =====
+   channel  1/12 (Fp1) done
+   channel  2/12 (Fp2) done
+   channel  3/12 (F1) done
+   channel  4/12 (F2) done
+   channel  5/12 (CZ) done
+   channel  6/12 (C3) done
+   channel  7/12 (C4) done
+   channel  8/12 (PZ) done
+   channel  9/12 (P3) done
+   channel 10/12 (P4) done
+   channel 11/12 (O1) done
+   channel 12/12 (O2) done
+Average number of neighors per channel: 4.7 
+Starting parallel pool (parpool) using the 'Threads' profile ...
+Connected to parallel pool with 8 workers.
+
+Cluster Summary (Merged mode):
+Cluster 1: 367 to 710 ms (11 channels). Peak: C3 at 448 ms (t = -5.21; d_z = -1.30)
+Cluster 2: 774 to 1198 ms (8 channels). Peak: O1 at 1129 ms (t = 3.86; d_z = 0.97)
+[12:21:40] post-stim: 2 cluster(s)
+    Cluster    Start      End       Peak     Tvalue_full    Tvalue    ES_full      ES      ES_metric    df_used    Channel     Polarity     NumElectrodes
+    _______    ______    ______    ______    ___________    ______    _______    ______    _________    _______    _______    __________    _____________
+
+       1       366.94    709.68    447.58      -5.2135      -5.214    -1.3034    -1.303       "d"         15        "C3"      "Negative"         11      
+       2       774.19    1197.6      1129       3.8604        3.86     0.9651     0.965       "d"         15        "O1"      "Positive"          8      
+
+[12:21:40] ===== pre-stimulus [-1200 -1] ms =====
+   channel  1/12 (Fp1) done
+   channel  2/12 (Fp2) done
+   channel  3/12 (F1) done
+   channel  4/12 (F2) done
+   channel  5/12 (CZ) done
+   channel  6/12 (C3) done
+   channel  7/12 (C4) done
+   channel  8/12 (PZ) done
+   channel  9/12 (P3) done
+   channel 10/12 (P4) done
+   channel 11/12 (O1) done
+   channel 12/12 (O2) done
+Average number of neighors per channel: 4.7 
+[12:22:17] pre-stim: NO cluster survived correction
+[12:22:17] ALDAY SENSITIVITY ANALYSIS COMPLETE
+[19:56:23] loaded N = 16, 12 channels
+Baseline window -3000 to -2000 ms (249 samples)
+
+Condition difference IN THE BASELINE WINDOW (Cohen d per channel):
+  Fp1   d = +0.293
+  Fp2   d = +0.005
+  F1    d = -0.016
+  F2    d = +0.153
+  CZ    d = +0.138
+  C3    d = +0.093
+  C4    d = +0.434
+  PZ    d = -0.112
+  P3    d = +0.373
+  P4    d = -0.092
+  O1    d = +0.425
+  O2    d = +0.387
+max |d| = 0.434  (small values => no collinearity concern)
+
+[19:56:23] ===== post-stimulus [0 1200] ms =====
+   channel  1/12 (Fp1) done
+   channel  2/12 (Fp2) done
+   channel  3/12 (F1) done
+   channel  4/12 (F2) done
+   channel  5/12 (CZ) done
+   channel  6/12 (C3) done
+   channel  7/12 (C4) done
+   channel  8/12 (PZ) done
+   channel  9/12 (P3) done
+   channel 10/12 (P4) done
+   channel 11/12 (O1) done
+   channel 12/12 (O2) done
+Average number of neighors per channel: 4.7 
+Starting parallel pool (parpool) using the 'Threads' profile ...
+Connected to parallel pool with 8 workers.
+
+Cluster Summary (Merged mode):
+Cluster 1: 367 to 710 ms (11 channels). Peak: C3 at 448 ms (t = -5.21; d_z = -1.30)
+Cluster 2: 774 to 1198 ms (8 channels). Peak: O1 at 1129 ms (t = 3.86; d_z = 0.97)
+[19:57:29] post-stim: 2 cluster(s)
+    Cluster    Start      End       Peak     Tvalue_full    Tvalue    ES_full      ES      ES_metric    df_used    Channel     Polarity     NumElectrodes
+    _______    ______    ______    ______    ___________    ______    _______    ______    _________    _______    _______    __________    _____________
+
+       1       366.94    709.68    447.58      -5.2135      -5.214    -1.3034    -1.303       "d"         15        "C3"      "Negative"         11      
+       2       774.19    1197.6      1129       3.8604        3.86     0.9651     0.965       "d"         15        "O1"      "Positive"          8      
+
+[19:57:29] ===== pre-stimulus [-1200 -1] ms =====
+   channel  1/12 (Fp1) done
+   channel  2/12 (Fp2) done
+   channel  3/12 (F1) done
+   channel  4/12 (F2) done
+   channel  5/12 (CZ) done
+   channel  6/12 (C3) done
+   channel  7/12 (C4) done
+   channel  8/12 (PZ) done
+   channel  9/12 (P3) done
+   channel 10/12 (P4) done
+   channel 11/12 (O1) done
+   channel 12/12 (O2) done
+Average number of neighors per channel: 4.7 
+[19:58:40] pre-stim: NO cluster survived correction
+[19:58:40] ALDAY SENSITIVITY ANALYSIS COMPLETE

@@ -1,0 +1,5 @@
+stat,value,p,df,extra
+group_t_on_z,6.2740735650113,1.49046233411263e-05,15,NaN
+group_trimmed_mean_r,0.289145503130162,NaN,NaN,NaN
+ci_low,NaN,NaN,NaN,0.248145503130162
+ci_high,NaN,NaN,NaN,0.392145503130162

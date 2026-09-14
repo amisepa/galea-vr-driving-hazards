@@ -1,0 +1,2 @@
+Cluster,FreqMin_Hz,FreqMax_Hz,TimeMin_ms,TimeMax_ms,PeakFreq_Hz,PeakTime_ms,Peak_t,Cohens_d,Size_pts
+1,3,30,266.129032258064,766.129032258064,7,443.548387096774,7.88923090320911,1.97230772580228,2672

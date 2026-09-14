@@ -1,0 +1,192 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 2100 1260" width="2100" height="1260"
+     font-family="Arial, Helvetica, sans-serif">
+<title>Study design, signal processing and analysis overview</title>
+
+<defs>
+  <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#3A4550"/>
+  </marker>
+</defs>
+
+<style>
+  .band   { fill:#17627A; }
+  .bandtx { fill:#FFFFFF; font-size:30px; font-weight:bold; }
+  .h      { fill:#17627A; font-size:27px; font-weight:bold; }
+  .b      { fill:#26313B; font-size:25px; font-weight:bold; }
+  .t      { fill:#26313B; font-size:23px; }
+  .step   { fill:#26313B; font-size:23px; font-weight:bold; }
+  .m      { fill:#68737E; font-size:22px; }
+  .box    { fill:#FFFFFF; stroke:#B9C4CC; stroke-width:2; }
+  .stage  { fill:#EEF4F7; stroke:#8FB8CE; stroke-width:2; }
+  .lead   { stroke:#3A4550; stroke-width:2.5; fill:none; }
+  .rule   { stroke:#D6DDE3; stroke-width:2; }
+  .card   { fill:none; stroke:#8794A0; stroke-width:2.5; }
+</style>
+
+<rect width="2100" height="1260" fill="#FFFFFF"/>
+
+<!-- t = 0 guide. The blowout marker in panel A and the t = 0 line inside each
+     example-participant panel in C all sit on x = 850. The panels are exported
+     uncropped with the axes rectangle fixed at left 0.135, width 0.845, so a
+     symmetric time axis puts t = 0 at 0.55 of the image width; at width 540
+     that is 297 px, hence image x = 553. See analysis/make_figures.m. -->
+<line x1="850" y1="492" x2="850" y2="600" stroke="#C9D1D8" stroke-width="2" stroke-dasharray="7,7"/>
+
+<!-- ================= A. TRIAL STRUCTURE ================= -->
+<rect x="0" y="0" width="1150" height="44" class="band"/>
+<text x="24" y="33" class="bandtx">A &#160;&#160;Trial structure</text>
+
+<text x="850" y="100" class="b" text-anchor="middle">Tire blowout, t = 0</text>
+<text x="850" y="128" class="m" text-anchor="middle">loud bang + tire bursts, car veers</text>
+
+<g transform="translate(850,162) scale(0.78)">
+  <path d="M0.0,-21.0 L2.3,-8.7 L10.5,-18.2 L6.4,-6.4 L18.2,-10.5 L8.7,-2.3 L21.0,0.0 L8.7,2.3 L18.2,10.5 L6.4,6.4 L10.5,18.2 L2.3,8.7 L0.0,21.0 L-2.3,8.7 L-10.5,18.2 L-6.4,6.4 L-18.2,10.5 L-8.7,2.3 L-21.0,0.0 L-8.7,-2.3 L-18.2,-10.5 L-6.4,-6.4 L-10.5,-18.2 L-2.3,-8.7 Z"
+        fill="#E8A33D" stroke="#B2761E" stroke-width="1.6"/>
+</g>
+<line x1="850" y1="180" x2="850" y2="470" stroke="#26313B" stroke-width="2.5" stroke-dasharray="8,6"/>
+
+<!-- screens skewed so the sequence reads as receding in depth -->
+<g transform="translate(41.4,0) skewX(-12)">
+  <image xlink:href="nocrash.png" x="180" y="140" width="240" height="109" preserveAspectRatio="xMidYMid slice"/>
+  <rect x="180" y="140" width="240" height="109" class="card"/>
+</g>
+<text x="288" y="282" class="t" text-anchor="middle"><tspan style="font-weight:bold">approach</tspan>, 7 s</text>
+<text x="288" y="308" class="m" text-anchor="middle">identical in both conditions</text>
+
+<line x1="424" y1="195" x2="842" y2="195" class="lead"/>
+<path d="M850,202 L700,262" class="lead"/>
+<path d="M850,202 L1000,262" class="lead"/>
+
+<g transform="translate(68.1,0) skewX(-12)">
+  <image xlink:href="crash.png" x="580" y="266" width="240" height="109" preserveAspectRatio="xMidYMid slice"/>
+  <rect x="580" y="266" width="240" height="109" class="card"/>
+</g>
+<text x="688" y="405" class="t" text-anchor="middle"><tspan style="font-weight:bold" fill="#A3352A">collision</tspan>, 3.5 s</text>
+
+<g transform="translate(68.1,0) skewX(-12)">
+  <image xlink:href="nocrash.png" x="880" y="266" width="240" height="109" preserveAspectRatio="xMidYMid slice"/>
+  <rect x="880" y="266" width="240" height="109" class="card"/>
+</g>
+<text x="988" y="405" class="t" text-anchor="middle"><tspan style="font-weight:bold" fill="#1F6E8F">no-collision</tspan>, 6 s</text>
+
+<rect x="730" y="424" width="120" height="30" fill="#F3EFD6" stroke="#C9BE86" stroke-width="2"/>
+<rect x="850" y="424" width="120" height="30" fill="#DDEAF2" stroke="#8FB8CE" stroke-width="2"/>
+<text x="722" y="446" class="m" text-anchor="end">pre-stimulus</text>
+<text x="978" y="446" class="m">post-stimulus</text>
+<text x="850" y="482" class="m" text-anchor="middle">1200 ms each, analysed identically</text>
+
+<!-- ================= B. ACQUISITION ================= -->
+<rect x="1170" y="0" width="930" height="44" class="band"/>
+<text x="1194" y="33" class="bandtx">B &#160;&#160;Acquisition</text>
+
+<image xlink:href="galea_cartoon_woman.png" x="1196" y="70" width="310" height="200" preserveAspectRatio="xMidYMid meet"/>
+
+<text x="1540" y="112" class="h">Questionnaires data</text>
+<text x="1540" y="146" class="t">Written informed consent, then screening</text>
+<text x="1540" y="176" class="m">demographics, education, TIPI-10 personality,</text>
+<text x="1540" y="204" class="m">belief in intuition, and self-rated driving,</text>
+<text x="1540" y="232" class="m">sports, gaming and meditation experience</text>
+
+<text x="1540" y="284" class="h">Physiology data</text>
+<text x="1540" y="318" class="t">EEG : 12 dry channels, 250 Hz</text>
+<text x="1540" y="346" class="t">PPG : red + infrared, 50 Hz</text>
+<text x="1540" y="374" class="m">EDA, EMG, EOG and IMU recorded, not analysed</text>
+
+<text x="1200" y="428" class="h">Sample size</text>
+<text x="1200" y="462" class="t">18 questionnaires : 16 EEG : 14 cardiac</text>
+
+<line x1="0" y1="504" x2="2100" y2="504" class="rule"/>
+
+<!-- ================= C. SIGNAL PROCESSING ================= -->
+<rect x="0" y="524" width="1150" height="44" class="band"/>
+<text x="24" y="557" class="bandtx">C &#160;&#160;Signal processing</text>
+
+<text x="40" y="618" class="step">1 &#160;Minimum-phase filter, 0.5 to 30 Hz</text>
+<text x="40" y="658" class="step">2 &#160;Bad channels interpolated</text>
+<text x="40" y="698" class="step">3 &#160;ASR burst reconstruction (SD 100)</text>
+<text x="40" y="738" class="step">4 &#160;ICA, ocular components removed</text>
+<text x="40" y="778" class="step">5 &#160;Epochs &#8722;3000 to +3000 ms</text>
+<text x="40" y="818" class="step">6 &#160;Channel space, not component space</text>
+
+<text x="40" y="870" class="b">Per participant, on average</text>
+<text x="40" y="904" class="m">1.4 bad channels, 3.4% of samples</text>
+<text x="40" y="930" class="m">reconstructed by ASR, 3.6 epochs rejected</text>
+<text x="40" y="962" class="m">1635 trials retained across 16 participants</text>
+
+<image xlink:href="methods_erp_sub013.png" x="554" y="596" width="540" height="292" preserveAspectRatio="xMidYMid meet"/>
+<text x="554" y="916" class="m">Example participant (sub-013), 12-channel average</text>
+<image xlink:href="methods_hr_sub013.png" x="552" y="944" width="540" height="255" preserveAspectRatio="xMidYMid meet"/>
+<text x="552" y="1227" class="m">Same participant, event-related heart rate</text>
+
+<!-- ================= D. STATISTICAL ANALYSIS ================= -->
+<rect x="1170" y="524" width="930" height="44" class="band"/>
+<text x="1194" y="557" class="bandtx">D &#160;&#160;Statistical analysis</text>
+
+<text x="1190" y="616" class="h">1 &#160;Mass-univariate GLM</text>
+
+<rect x="1194" y="632" width="420" height="44" rx="5" class="box"/>
+<text x="1404" y="661" class="t" text-anchor="middle">1635 single trials (804 / 831)</text>
+<line x1="1404" y1="676" x2="1404" y2="694" class="lead" marker-end="url(#arw)"/>
+
+<rect x="1194" y="698" width="420" height="58" rx="5" class="stage"/>
+<text x="1404" y="726" class="t" text-anchor="middle">Level 1 : WLS, Huber weights</text>
+<text x="1404" y="750" class="m" text-anchor="middle">one &#946; map per participant</text>
+<line x1="1404" y1="756" x2="1404" y2="774" class="lead" marker-end="url(#arw)"/>
+
+<rect x="1194" y="778" width="420" height="58" rx="5" class="stage"/>
+<text x="1404" y="806" class="t" text-anchor="middle">Level 2 : one-sample test</text>
+<text x="1404" y="830" class="m" text-anchor="middle">across 16 participants</text>
+<line x1="1404" y1="836" x2="1404" y2="854" class="lead" marker-end="url(#arw)"/>
+
+<rect x="1194" y="858" width="420" height="58" rx="5" fill="#DDEAF2" stroke="#17627A" stroke-width="3"/>
+<text x="1404" y="886" class="t" style="font-weight:bold" text-anchor="middle">Cluster correction (FWER)</text>
+<text x="1404" y="910" class="m" style="fill:#476F7F" text-anchor="middle">1000 permutations</text>
+
+<text x="1190" y="964" class="b">Baseline handling</text>
+<text x="1190" y="998" class="t">1 &#160;Primary : no baseline correction</text>
+<text x="1190" y="1032" class="t">2 &#160;Sensitivity : Alday regressor</text>
+<text x="1190" y="1060" class="m">baseline as a predictor, not subtracted</text>
+<text x="1190" y="1088" class="m">both give the same two clusters</text>
+
+<text x="1190" y="1132" class="b">Exploratory covariates</text>
+<text x="1190" y="1166" class="m">age, sex, education, driving, sports,</text>
+<text x="1190" y="1194" class="m">video games, meditation, intuition,</text>
+<text x="1190" y="1222" class="m">five TIPI-10 traits. All 26 null.</text>
+
+<text x="1650" y="616" class="h">2 &#160;LOSO decoding</text>
+<text x="1650" y="650" class="t">leave one subject out, 15 folds</text>
+
+<g transform="translate(1650,670)">
+  <rect x="0" y="0" width="25" height="25" rx="4" fill="#B23A2E"/>
+  <g fill="#C9D1D8">
+    <rect x="28"  y="0" width="25" height="25" rx="4"/><rect x="56"  y="0" width="25" height="25" rx="4"/>
+    <rect x="84"  y="0" width="25" height="25" rx="4"/><rect x="112" y="0" width="25" height="25" rx="4"/>
+    <rect x="140" y="0" width="25" height="25" rx="4"/><rect x="168" y="0" width="25" height="25" rx="4"/>
+    <rect x="196" y="0" width="25" height="25" rx="4"/><rect x="224" y="0" width="25" height="25" rx="4"/>
+    <rect x="252" y="0" width="25" height="25" rx="4"/><rect x="280" y="0" width="25" height="25" rx="4"/>
+    <rect x="308" y="0" width="25" height="25" rx="4"/><rect x="336" y="0" width="25" height="25" rx="4"/>
+    <rect x="364" y="0" width="25" height="25" rx="4"/><rect x="392" y="0" width="25" height="25" rx="4"/>
+  </g>
+</g>
+<text x="1650" y="736" class="m">z-scoring fitted on training folds only</text>
+
+<text x="1650" y="782" class="b">Input</text>
+<text x="1650" y="816" class="t">trial-averaged ERP time course</text>
+<text x="1650" y="844" class="m">0 to 1000 ms, 30 observations (15 &#215; 2)</text>
+<text x="1650" y="872" class="m">12 chan &#215; 248 points = 2976 features</text>
+
+<text x="1650" y="918" class="b">Six classifiers</text>
+<text x="1650" y="952" class="t">SVM (RBF) &#183; MLP (5 hidden units)</text>
+<text x="1650" y="980" class="t">random forest (100) &#183; decision tree</text>
+<text x="1650" y="1008" class="t">naive Bayes &#183; k-NN (k = 3, cosine)</text>
+
+<text x="1650" y="1054" class="b">Reported</text>
+<text x="1650" y="1088" class="m">accuracy, sensitivity, specificity,</text>
+<text x="1650" y="1116" class="m">precision, F1, AUC, 95% Wilson CIs</text>
+
+<line x1="1160" y1="0" x2="1160" y2="494" class="rule"/>
+<line x1="1160" y1="524" x2="1160" y2="1240" class="rule"/>
+<line x1="1630" y1="584" x2="1630" y2="1240" class="rule"/>
+
+</svg>

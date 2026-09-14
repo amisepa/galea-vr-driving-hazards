@@ -1,0 +1,22 @@
+
+===== post-stimulus: 12 chan x 298 time, 1000 perms =====
+Average number of neighors per channel: 4.7 
+cluster mass threshold: 89.5389
+observed clusters: 7 | suprathreshold points: 880 (24.6%) | max |t| = 5.387
+largest observed mass: 910.12
+post-stim: 3 cluster(s) survived
+    Cluster    Start      End       Peak     Tvalue       ES       NumElectrodes    Channel     Mass     pcorr
+    _______    ______    ______    ______    _______    _______    _____________    _______    ______    _____
+
+       1       274.19    334.68    274.19     3.4943    0.87358          3          {'F2'}     126.44    0.031
+       2       379.03    540.32    451.61    -5.3872    -1.3468         11          {'C3'}     910.12    0.001
+       3       826.61     862.9    854.84     3.3536     0.8384          6          {'P3'}     98.925    0.043
+
+
+===== pre-stimulus: 12 chan x 297 time, 1000 perms =====
+Average number of neighors per channel: 4.7 
+cluster mass threshold: 73.877
+observed clusters: 0 | suprathreshold points: 140 (3.9%) | max |t| = 3.096
+pre-stim: NO cluster survived correction
+
+DONE - both windows corrected with the identical library procedure.

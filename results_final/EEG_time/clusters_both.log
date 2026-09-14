@@ -1,0 +1,23 @@
+[23:24:02] loaded N = 16
+Mean neighbours per channel: 2.8
+[23:24:02] ===== post-stimulus [0 1200] ms =====
+Starting parallel pool (parpool) using the 'Threads' profile ...
+Connected to parallel pool with 8 workers.
+[23:24:12] GLM + permutations done
+Suprathreshold points: 880 of 3576 (24.6%) | max |t| = 5.387
+Cluster-mass threshold: 306.69
+Observed clusters: 17 | largest mass = 951.81
+[23:24:13] post-stim: 2 cluster(s)
+    Cluster    Start      End       Peak     Tvalue       ES       NumElectrodes    Channel     Mass     pcorr
+    _______    ______    ______    ______    _______    _______    _____________    _______    ______    _____
+
+       1        362.9    588.71    451.61    -5.3872    -1.3468         11          {'C3'}     951.81    0.001
+       2       774.19    1197.6    1028.2     3.8453    0.96132          8          {'O1'}     815.67    0.002
+
+[23:24:14] ===== pre-stimulus [-1200 -1] ms =====
+[23:24:20] GLM + permutations done
+Suprathreshold points: 140 of 3564 (3.9%) | max |t| = 3.096
+Cluster-mass threshold: 259.27
+Observed clusters: 36 | largest mass = 29.25
+[23:24:22] pre-stim: NO cluster survived correction
+[23:24:22] BOTH WINDOWS COMPLETE
