@@ -80,3 +80,7 @@ GPL-3.0 — the same licence as [eeg_robust_statistics](https://github.com/amise
 [Ascent](https://github.com/amisepa/Ascent) and [BrainBeats](https://github.com/amisepa/BrainBeats),
 which this pipeline depends on. Academic use is unaffected; anyone redistributing the code
 (including commercial users) must release their modifications under the same terms.
+
+Copyright (c) 2026 Cedric Cannard (EEGLAB plugin, preprocessing pipeline, EEG/PPG analyses,
+BIDS conversion) and Demet Yesilbas (`analysis/classification/` — the LOSO classification,
+permutation and multimodal EEG+HR analyses).

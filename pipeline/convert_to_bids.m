@@ -56,6 +56,8 @@ gInfo.BIDSVersion = '1.10';
 gInfo.HEDVersion = '8.1.0';
 gInfo.Authors = {'Cedric Cannard', 'Demet Yesilbas'};
 gInfo.ReferencesAndLinks = {'https://osf.io/xuw34'};
+% Dataset licence: CC0-1.0 is the OpenNeuro norm for DATA (facts, no
+% copyright-protectable expression); the ANALYSIS CODE stays GPL-3.0.
 gInfo.License = 'CC0-1.0';
 
 README = [ ...
