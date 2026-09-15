@@ -12,7 +12,7 @@ wearable multimodal headset.* Supported by the BIAL Foundation. Preregistered at
 
 | Folder | Contents |
 |---|---|
-| `pipeline/` | Per-subject preprocessing. `galea_pipeline_v6_EEG.m` is current; `functions/` holds the Galea-specific helpers (import, event renaming, polarity correction, bad-channel detection). `galea_pipeline_v5_ppg.m` produces the per-subject heart-rate exports (`ERP_PPG.mat`) the cardiac analysis reads. |
+| `pipeline/` | Per-subject preprocessing. `galea_pipeline_v6_EEG.m` is current; `functions/` holds the Galea-specific helpers (import, event renaming, polarity correction, bad-channel detection). `galea_pipeline_v5_ppg.m` produces the per-subject heart-rate exports (`ERP_PPG.mat`) the cardiac analysis reads. `convert_to_bids.m` converts the study data to BIDS + HED; `rebuild_erp_from_bids.m` regenerates the per-subject exports from the BIDS derivative; `verify_bids_roundtrip.m` checks the round-trip against the original exports. |
 | `analysis/` | Group-level analyses. Everything named `run_final_*` operates on the repaired dataset and writes to `results_final/`. |
 | `manuscript/` | `build_manuscript.js` generates the .docx from the result files, plus the current draft and the earlier versions. |
 | `results_final/` | Output of the current analyses. Superseded folders were removed; they are archived in the study's Proton Drive archive (`code_archive/results_superseded/`). |
