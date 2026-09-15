@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 function capture_gui_screenshots(outdir, scale)
 %CAPTURE_GUI_SCREENSHOTS  Publication-resolution captures of the plugin GUIs.
 %

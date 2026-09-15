@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 %% Export the repaired data for the classification analyses
 %
 % Produces one self-contained, portable file so the ML/DL work can be re-run

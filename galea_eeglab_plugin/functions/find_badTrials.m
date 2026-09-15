@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 %% Scan data to find bad trials using amplitude and high-frequency power
 %
 % INPUT:

@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 %% H4 (time-symmetry) on the TF data - registered style, TF-based
 %
 % The registered H4 (q17, "Time-symmetry analysis") is peak-matched: it needs

@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 function [mask, pcorr, info] = cluster_correct(tvals, tvals_H0, opts)
 % CLUSTER_CORRECT  Cluster-mass permutation correction, one implementation for
 % every analysis in this project.

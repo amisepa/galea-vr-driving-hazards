@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 %% Individual-difference (moderator) models on the TIME-FREQUENCY effects
 %
 % WHY THIS EXISTS. analysis/run_final_EEG_covariates.m tests whether the 13

@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 function [mask, pcorr, max_th] = compute_mcc_fast(tvals, pvals, tvals_H0, pvals_H0, alpha, chanlocs, nSub) %#ok<INUSD>
 % COMPUTE_MCC_FAST  Deprecated shim. Calls cluster_correct.
 %

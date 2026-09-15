@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 %% Load Galea data into MATLAB and convert to EEGLAB.
 % 
 % Channel   Type    Label

@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 function [badChan, flaggedRatio] = flag_bad_eeg_channels_window(eeg_data, srate, min_corr, ignored_quantile, maxTol, overlap) 
 
 % Flags bad EEG channels using sliding window analysis

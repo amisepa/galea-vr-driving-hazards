@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 %% Alday (2019) GLM baseline correction - ERP sensitivity analysis
 %
 % Instead of SUBTRACTING a baseline (which assumes a coefficient of exactly -1

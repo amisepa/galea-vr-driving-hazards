@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 function Y_smooth = causal_smooth_trials(Y, win_samples)
     % Y: [nChan x nTime x nTrials]
     % Causal moving average: only looks backward in time

@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 %% How extended is the pre-stimulus effect, really?
 %
 % WHY THIS EXISTS. The pre-stimulus result is reported as a cluster at

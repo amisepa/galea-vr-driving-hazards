@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 function H = galea_pop_layout(~)
 % GALEA_POP_LAYOUT  Content height of the main Galea window.
 %

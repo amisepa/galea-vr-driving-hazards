@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 function plot_tf_clusters(mask_clusters, summary_tbl, tvals, time, foi, mcc_type, out_path)
 % One diagnostic panel pair per surviving cluster: mean t across the cluster's
 % frequency band over time, and mean t across the cluster's time window over

@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 %% Generate every manuscript figure from results_final and the per-subject exports.
 %
 % Nothing here re-runs an analysis. Masks, t-values and cluster tables are read

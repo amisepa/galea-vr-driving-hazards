@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 clear; close all; clc
 eeglab; close
 paths = galea_set_paths();   % configure paths (edit galea_set_paths.m for your machine)

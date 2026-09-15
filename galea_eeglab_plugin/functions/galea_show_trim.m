@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 function galea_show_trim(EEGori, EEG, trimPad)
 % GALEA_SHOW_TRIM  Overview figure showing what the trim step removed.
 %

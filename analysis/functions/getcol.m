@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 function v = getcol(raw, match_idx, pat)
 %GETCOL  Read one questionnaire column for a set of matched participants.
 %

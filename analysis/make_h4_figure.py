@@ -1,3 +1,5 @@
+# Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 """Generate Figure S2: per-participant H4 time-symmetry correlations (forest plot).
 
 Reads the analysis outputs directly (no numbers typed):

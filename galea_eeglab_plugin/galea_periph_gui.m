@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 function out = galea_periph_gui(def, hasPPG)
 % GALEA_PERIPH_GUI  Parameters for the Galea auxiliary signals (PPG/EDA/EMG/IMU).
 %

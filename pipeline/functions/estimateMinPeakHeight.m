@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 function minPeakHeight = estimateMinPeakHeight(ppgSignal, method)
 % Estimate minimum peak height automatically
 % Inputs:

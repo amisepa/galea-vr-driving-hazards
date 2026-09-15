@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 %% Import raw data collected with GaleaGUI software with the Galea Beta headset
 % into MATLAB and convert to EEGLAB format.
 % 

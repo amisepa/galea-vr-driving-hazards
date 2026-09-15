@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 function [r, p, t, l, d, e, obj] = cvxEDA(y, delta, varargin)
 %CVXEDA Convex optimization approach to electrodermal activity processing
 %   This function implements the cvxEDA algorithm described in "cvxEDA: a

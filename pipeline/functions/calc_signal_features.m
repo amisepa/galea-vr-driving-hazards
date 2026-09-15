@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 function [metrics, seg_idx]= calc_signal_features(signal, sig_type, fs, winSize, overlap)
 % Calculate signal features for quality assessment
 % Separately process baseline, highpass, and lowpass filtered signals

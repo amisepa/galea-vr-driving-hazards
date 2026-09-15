@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 %% Estime mean peak distance from all availabel PPG channels
 % 
 % Copyright (C), Evolve Inc., Cedric Cannard, Nov 2024

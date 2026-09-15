@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 %% Trial-level test: is the pre-stimulus EEG cluster peripheral activity?
 %
 % The causal time-frequency analysis leaves a broadband 3-30 Hz pre-stimulus

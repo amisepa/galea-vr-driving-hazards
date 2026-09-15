@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 function ok = galea_eegplot_yscale(val)
 % GALEA_EEGPLOT_YSCALE  Set the vertical scale of the open eegplot figure.
 %

@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 %% Galea plugin tutorial
 %
 % From a raw Galea recording to an ERP, in seven sections. Run one at a time

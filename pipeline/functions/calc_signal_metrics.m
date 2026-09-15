@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 % Calculate signal metrics capturing different types of signal/noise 
 % characteristics. 
 % 

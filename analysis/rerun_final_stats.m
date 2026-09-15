@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 %% Re-run the time-domain group statistics with the consolidated correction
 %
 % Replaces run_final_EEG_erp.m + run_final_EEG_prestim.m +

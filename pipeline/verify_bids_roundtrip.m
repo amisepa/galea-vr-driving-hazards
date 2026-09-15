@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 %% Verify the BIDS-rebuilt ERP exports against the originals
 %
 % For every subject, loads ERP_from_BIDS/<sub>/ERP_EEG_new.mat and the

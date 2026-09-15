@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 %% Rename events for the VR driving with intuition project.
 %
 % The numeric codes below are written by the Unity application used in THIS

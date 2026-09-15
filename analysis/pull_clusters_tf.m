@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 function [mask_clusters, summary_tbl] = pull_clusters_tf(mask, tvals, time, foi, ...
     merge_clust, es, nSub)
 % PULL_CLUSTERS_TF  Split a corrected time-frequency mask into per-cluster masks

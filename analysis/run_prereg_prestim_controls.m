@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 %% Preregistered pre-stimulus control analyses (OSF xuw34, q16 and q17)
 %
 % Two analyses were registered and never run. The manuscript says they were

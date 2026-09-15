@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 %% Recover which original trial each analysed epoch came from
 %
 % WHY. Two analyses need to know a trial's POSITION in the 120-trial sequence:

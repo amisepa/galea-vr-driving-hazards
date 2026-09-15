@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 function rates = galea_probe_rates(filename, filepath)
 % GALEA_PROBE_RATES  Quick sampling-rate read for a Galea recording.
 %

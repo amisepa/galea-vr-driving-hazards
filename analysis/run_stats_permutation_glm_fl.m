@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 function [betas_obs, tvals_obs, tvals_H0, dz_map, pvals_obs, pvals_H0] = ...
     run_stats_permutation_glm_fl(Y_all, X, condition_col, nSub, nPerm, varargin)
 %RUN_STATS_PERMUTATION_GLM_FL  Hierarchical GLM with Freedman-Lane permutation.

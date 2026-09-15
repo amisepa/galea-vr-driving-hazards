@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 %% Time-frequency analysis with a CAUSAL wavelet
 %
 % WHY THIS EXISTS. A symmetric Morlet wavelet estimates power at time t from

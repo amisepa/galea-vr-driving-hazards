@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 % Desktop wrapper for capture_gui_screenshots (run from -r, not -batch).
 % Path surgery mirrors rerun_aperiodic_figs.m: EEGLAB plugin stubs
 % (Biosig 'maybe-missing', FieldTrip compat) shadow base MATLAB functions

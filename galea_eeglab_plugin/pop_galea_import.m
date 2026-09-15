@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 function [EEG, com] = pop_galea_import(varargin)
 % POP_GALEA_IMPORT  Import raw Galea (OpenBCI) recordings into EEGLAB.
 %

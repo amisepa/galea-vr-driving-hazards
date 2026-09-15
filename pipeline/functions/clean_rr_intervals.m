@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 function [nn_intervals, nn_t, idx_corrected] = clean_rr_intervals(rr_t, rr_intervals)
     % clean_rr_intervals - Detects and corrects abnormal heartbeats in RR interval time series.
     %

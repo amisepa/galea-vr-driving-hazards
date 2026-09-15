@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 % Plots 2 times series, their 95% CI and significance bars at the bottom
 % from h vector (FDR-corrected p-values). If method is not precised,
 % 10% trimmed mean is used. 

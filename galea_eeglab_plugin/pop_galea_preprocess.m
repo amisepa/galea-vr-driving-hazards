@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 function [EEG, com] = pop_galea_preprocess(EEG, varargin)
 % POP_GALEA_PREPROCESS  Clean continuous Galea data (Cannard 2026 methods).
 %

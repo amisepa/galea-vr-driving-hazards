@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 %% Rebuild per-subject ERP exports from the BIDS derivative
 %
 % WHAT THIS DOES

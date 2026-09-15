@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 function EEG = fix_polarity(EEG, suspect_labels, lp_cutoff, threshold)
 % FIX_POLARITY  Detect and correct reversed-polarity channels in EEGLAB data.
 %

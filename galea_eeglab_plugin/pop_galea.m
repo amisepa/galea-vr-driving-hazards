@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 function [EEG, com] = pop_galea(EEG)
 %POP_GALEA  Load and process a Galea recording. One window, top to bottom.
 %

@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 function [auxFile, msg] = galea_aux_filename(filename, filepath)
 %GALEA_AUX_FILENAME  Companion Aux file for a Galea recording.
 %

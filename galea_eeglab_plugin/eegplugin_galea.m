@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 function vers = eegplugin_galea(fig, trystrs, catchstrs)
 % EEGPLUGIN_GALEA  EEGLAB plugin for the Galea multimodal VR headset (OpenBCI).
 %

@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 %% Exploratory individual-difference (moderator) models - time domain
 %
 % Re-runs the 13 Level-2 covariate GLMs on the REPAIRED data, for both the

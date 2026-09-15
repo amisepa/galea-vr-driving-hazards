@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 %% Rename events for the VR driving with intuition project. 
 
 function EEG = galea_rename_events(EEG)

@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 function plot_tf_grandavg(time, foi, CRASH_AVG, NOCRASH_AVG, tvals, mask, mask_clusters, summary_tbl, mcc_type, mode, out_path)
 % PLOT_TF_GRANDAVG  Grand-average time-frequency panels: each condition, their
 % difference, and the t-map with surviving clusters outlined.

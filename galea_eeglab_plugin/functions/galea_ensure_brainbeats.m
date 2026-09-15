@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 function ok = galea_ensure_brainbeats()
 % GALEA_ENSURE_BRAINBEATS  Make sure the BrainBeats extension is usable.
 %

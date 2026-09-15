@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 %% Galea statistical analysis at group level of ERP data.
 %
 % Cedric Cannard, May 2025

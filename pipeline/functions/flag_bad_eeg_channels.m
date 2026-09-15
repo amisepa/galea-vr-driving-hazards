@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 function [data_cleaned, removed_channels] = flag_bad_eeg_channels(data, fs, min_corr, ignored_quantile, window_len, max_broken_time)
 % Clean EEG channels by identifying and removing consistently low-correlation channels.
 % Inputs:

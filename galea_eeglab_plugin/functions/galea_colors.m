@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 function c = galea_colors()
 %GALEA_COLORS  EEGLAB house colours, safe to call from a static workspace.
 %

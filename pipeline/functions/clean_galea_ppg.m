@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 function [ppg_data, flat, snr, sqi_mu, sqi_badRatio, corrected_ratio, NN_t, NN] = clean_galea_ppg(ppg_data, time, fs, filt_type, detect_meth, vis)
 
 sqi_mu = [];

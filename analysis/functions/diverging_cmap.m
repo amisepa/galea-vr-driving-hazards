@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 function cmap = diverging_cmap(n)
 %DIVERGING_CMAP  Simple diverging colormap (blue -> white -> red).
 %

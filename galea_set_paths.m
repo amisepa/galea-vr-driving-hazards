@@ -1,3 +1,5 @@
+%% Copyright (c) 2026 Cedric Cannard. GPL-3.0 (see the repository LICENSE).
+
 function paths = galea_set_paths(eeglab_path, robust_path, ascent_path, data_path)
 %GALEA_SET_PATHS  Configure the paths used by every Galea study script.
 %
