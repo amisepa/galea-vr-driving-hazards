@@ -116,14 +116,14 @@ pInfoDesc.participant_id.Description = 'unique participant identifier';
 % One HED string per event label. Trial-onset events carry the trial context
 % (driving-scene, collision/no-collision); tire-pop events carry the
 % sensory event itself (sound + visual change).
-HED.baseline_block    = 'Event, Experimental-block, Description/Stationary-driving-scene baseline block';
-HED.baseline_trial    = 'Event, Experimental-trial, Description/Baseline trial onset, Visual-event, Driving-scene';
-HED.baseline_dev      = 'Event, Experimental-trial, Description/Baseline deviation, Visual-event, Road-deviation';
-HED.experiment_block  = 'Event, Experimental-block, Description/Collision-hazard experimental block';
-HED.collision_trial   = 'Event, Experimental-trial, Description/Collision trial start, Visual-event, Driving-scene';
-HED.collision_pop     = 'Event, Sensory-event, Auditory-event, Tire-blowout-sound, Visual-event, Driving-scene-collision';
-HED.no_collision_pop  = 'Event, Experimental-trial-timepoint, Description/Time-matched control in no-collision trial, Visual-event, Driving-scene';
-HED.no_collision_trl  = 'Event, Experimental-trial, Description/No-collision trial start, Visual-event, Driving-scene';
+HED.baseline_block    = 'Event, Experiment-structure, Description/Start of the baseline time-block';
+HED.baseline_trial    = 'Event, Experiment-structure, Description/Start of a baseline driving-scene trial';
+HED.baseline_dev      = 'Event, Experiment-structure, Description/Baseline driving period with a road deviation';
+HED.experiment_block  = 'Event, Experiment-structure, Description/Start of the experimental time-block';
+HED.collision_trial   = 'Event, Experiment-structure, Description/Start of a collision driving-scene trial';
+HED.collision_pop     = 'Event, Sensory-event, Environmental-sound, Description/Tire-blowout-sound, Visual-presentation, Virtual-world, Description/Collision-driving-scene';
+HED.no_collision_pop  = 'Event, Sensory-event, Visual-presentation, Virtual-world, Description/Time-matched control point of a no-collision driving-scene trial';
+HED.no_collision_trl  = 'Event, Experiment-structure, Description/Start of a no-collision driving-scene trial';
 
 % Marker label -> {trial_type, HED tag}
 LABEL_HED = { ...
@@ -229,6 +229,11 @@ for iSub = 1:nSub
                     (ev(iEv).latency-1)/EEG_proc.srate, dur, ev(iEv).latency, ev(iEv).type, tt, hed);
             end
             fclose(fid);
+            % sidecar JSON: column descriptions. The HED column is NOT
+            % described here on purpose: 'HED' as a sidecar key is illegal
+            % (HED spec Appendix B, SIDECAR_INVALID). The HED column in
+            % events.tsv is recognised by HED tools directly, and the version
+            % is declared in the EEG sidecar's HEDVersion field.
             jsonwrite(fullfile(proc_dir, [base '_events.json']), eInfoDesc, struct('indent', '  '));
         end
         nOK = nOK + 1;
