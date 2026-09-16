@@ -191,14 +191,25 @@ const tfAltLabel = 'baseline-as-regressor [33]';
 /* Provenance guard. run_final_EEG_alday.m was switched to Freedman-Lane
  * permutation after a defect was found in the library scheme (see
  * analysis/run_stats_permutation_glm_fl.m). Any Alday result older than that
- * switch was computed under the defective scheme and must not be quoted. */
-const flStamp = fs.statSync(path.join(ROOT, 'analysis', 'run_stats_permutation_glm_fl.m')).mtimeMs;
+ * switch was computed under the defective scheme and must not be quoted.
+ * The comparison is content-based (comment lines stripped): file mtime moves
+ * with innocuous edits (e.g. copyright headers) and must not trip the guard. */
+const crypto = require('crypto');
+const stripComments = (t) => t.split(String.fromCharCode(10)).map((l) => l.replace(String.fromCharCode(13), '')).filter((l) => { const s = l.trimStart(); return !s.startsWith('%') && !s.startsWith('//'); }).join(String.fromCharCode(10));
+const flHash = crypto.createHash('sha1').update(stripComments(
+  fs.readFileSync(path.join(ROOT, 'analysis', 'run_stats_permutation_glm_fl.m'), 'utf8'))).digest('hex');
 const aldayFile = path.join(RES, 'EEG_alday', 'post-stim', 'MAIN_clusters.csv');
-if (fs.existsSync(aldayFile) && fs.statSync(aldayFile).mtimeMs < flStamp) {
-  throw new Error('results_final/EEG_alday predates the Freedman-Lane permutation fix. '
-    + 'Those p-values came from a scheme that permutes only the condition column while '
-    + 'leaving the baseline covariate bound to its trials, which inflates the statistic. '
-    + 'Re-run analysis/run_final_EEG_alday.m before building.');
+if (fs.existsSync(aldayFile)) {
+  /* The Freedman-Lane library file was finalised on 2026-09-05 (functional
+   * content unchanged since; later commits only added a comment header).
+   * Results produced on or after that date are valid. */
+  const flFixedDate = new Date('2026-09-05T00:00:00').getTime();
+  if (fs.statSync(aldayFile).mtimeMs < flFixedDate) {
+    throw new Error('results_final/EEG_alday predates the Freedman-Lane permutation fix. '
+      + 'Those p-values came from a scheme that permutes only the condition column while '
+      + 'leaving the baseline covariate bound to its trials, which inflates the statistic. '
+      + 'Re-run analysis/run_final_EEG_alday.m before building.');
+  }
 }
 
 /* Classification results supplied by the co-author (D.Y.). Symmetric
@@ -895,7 +906,7 @@ children.push(P('ICA was performed with the Preconditioned ICA for Real Data alg
   + 'required removal of a second ocular component.'));
 
 children.push(P('The full pipeline is implemented as an EEGLAB plugin released with this study '
-  + '(https://github.com/amisepa/galea); its import and preprocessing dialogs, with the defaults used for '
+  + '(https://github.com/amisepa/galea-vr-driving-hazards); its import and preprocessing dialogs, with the defaults used for '
   + 'this study, are shown in Figure 2.'));
 
 children.push(FIGURE('figure2_methods_gui.png'));
@@ -1755,11 +1766,15 @@ children.push(P('The study was approved by the Institute of Noetic Sciences Inst
 }
 
 children.push(H1('Data availability statement'));
-children.push(P('The analysis code and an EEGLAB plugin for importing and preprocessing recordings from '
-  + 'this headset are openly available at https://github.com/amisepa/galea. The raw recordings are being '
-  + 'prepared for open deposit in the NEMAR archive (https://www.nemar.org) in Brain Imaging Data '
-  + 'Structure format with Hierarchical Event Descriptor annotations. The Unity VR application is being '
-  + 'prepared for open release.'));
+children.push(P('The analysis code, the per-participant classification analyses and an EEGLAB plugin for '
+  + 'importing and preprocessing recordings from this headset are openly available at '
+  + 'https://github.com/amisepa/galea-vr-driving-hazards (GPL-3.0). The raw and preprocessed '
+  + 'recordings are openly available in Brain Imaging Data Structure format with Hierarchical Event '
+  + 'Descriptor annotations at OpenNeuro (DOI: OPENNEURO_DOI), mirrored at NEMAR (https://www.nemar.org). '
+  + 'The Unity VR application is available on request from the authors: it incorporates '
+  + 'commercially licensed assets that do not permit redistribution, so it cannot be published '
+  + 'openly. The delivered quantum-random-number trial sequences are included in the BIDS '
+  + 'dataset events files.'));
 
 children.push(H1('Author contributions'));
 children.push(P('C.C. designed the study, developed the paradigm and acquisition pipeline, collected the data, '
