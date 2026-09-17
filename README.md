@@ -1,4 +1,6 @@
-# Galea VR collision study
+# Reactive and predictive processes during unpredictable driving hazards in virtual reality
+
+![Study overview: multimodal immersive VR recording, signal processing, and robust statistics / ML classification](manuscript/figures/repo_banner.png)
 
 Pre- and post-stimulus neurophysiology of unpredictable car collisions in immersive virtual
 reality, recorded with the Galea multimodal headset (OpenBCI) integrated into a Varjo Aero HMD.

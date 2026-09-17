@@ -4,6 +4,9 @@
 % Path surgery mirrors rerun_aperiodic_figs.m: EEGLAB plugin stubs
 % (Biosig 'maybe-missing', FieldTrip compat) shadow base MATLAB functions
 % (any.m, contains.m, isfile.m) and break findall/graphics code.
+% galea_set_paths lives in the repository ROOT; -r starts in an arbitrary
+% folder, so add the root before anything else.
+addpath(fileparts(fileparts(mfilename('fullpath'))));
 paths = galea_set_paths();   % configure paths (edit galea_set_paths.m for your machine)
 addpath(genpath(paths.eeglab));
 warning('off', 'all');

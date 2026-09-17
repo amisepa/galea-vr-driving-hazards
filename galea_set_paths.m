@@ -56,6 +56,7 @@ paths.pipeline_functions = fullfile(paths.root, 'pipeline', 'functions');
 paths.plugin             = fullfile(paths.root, 'galea_eeglab_plugin');
 paths.plugin_functions   = fullfile(paths.plugin, 'functions');
 paths.plugin_sample_data = fullfile(paths.plugin, 'sample_data');
+paths.plugin_figures     = fullfile(paths.plugin, 'figures');
 paths.manuscript_figures = fullfile(paths.root, 'manuscript', 'figures');
 paths.data_repo          = fullfile(paths.root, 'data');
 
