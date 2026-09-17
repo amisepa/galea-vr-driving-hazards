@@ -37,9 +37,7 @@ is [`galea_eeglab_plugin/tutorial_galea.m`](galea_eeglab_plugin/tutorial_galea.m
 ### 1. Install
 
 Copy (or clone) `galea_eeglab_plugin/` into `eeglab/plugins/` and restart
-EEGLAB. A single **Galea** entry appears in the EEGLAB menu bar:
-
-![The Galea headset](galea_eeglab_plugin/figures/galea_headset.png)
+EEGLAB. A single **Galea** entry appears in the EEGLAB menu bar.
 
 You also need the
 [BrainBeats](https://github.com/amisepa/BrainBeats) plugin if you want the PPG
