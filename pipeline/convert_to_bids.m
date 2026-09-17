@@ -96,8 +96,9 @@ eInfoDesc.value.Description  = 'Original Unity/OpenBCI marker code';
 eInfoDesc.trial_type.Description = 'Experimental condition of the event';
 eInfoDesc.trial_type.Levels.collision    = 'Tire-pop onset of a collision trial';
 eInfoDesc.trial_type.Levels.no_collision = 'Matching time point in a no-collision trial';
-eInfoDesc.trial_type.Levels.baseline     = 'Baseline-block event (stationary driving scene)';
-eInfoDesc.trial_type.Levels.block_start  = 'Start of a recording block';
+eInfoDesc.trial_type.Levels.baseline      = 'Baseline-block event (stationary driving scene)';
+eInfoDesc.trial_type.Levels.baseline_block = 'Start of the stationary-driving-scene baseline time-block';
+eInfoDesc.trial_type.Levels.block_start   = 'Start of a recording block';
 eInfoDesc.HED.LongName = 'HED 8.1.0 annotation string';
 
 cInfoDesc.name.Description = 'Channel name (10-20 labels for EEG, stream names otherwise)';
