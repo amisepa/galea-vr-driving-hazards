@@ -9,10 +9,12 @@ this plugin handles each one.
 
 ## Install
 
-Copy this folder into `eeglab/plugins/` and restart EEGLAB. Two menu items appear:
-
-- **File > Import data > From Galea headset**
-- **Tools > Preprocess Galea EEG**
+Copy this folder into `eeglab/plugins/` and restart EEGLAB. A **Galea** entry
+appears in the EEGLAB menu bar. It opens one window that does everything, top to
+bottom: load a recording (step 1), then optionally process it (step 2), one
+section per modality. For a fully worked example from raw file to ERP, see the
+step-by-step tutorial with screenshots in the [repository README](../README.md)
+or run the script [`tutorial_galea.m`](tutorial_galea.m) section by section.
 
 ## What it does
 
@@ -66,13 +68,15 @@ Two sample recordings ship in `sample_data/`:
 
 ## Also included
 
-`find_badTrials.m` — epoch rejection by amplitude and high-frequency residual, using
+- `tutorial_galea.m` — the same walkthrough as the repository README's tutorial as a runnable script, seven sections, each with more parameter detail.
+- `find_badTrials.m` — epoch rejection by amplitude and high-frequency residual, using
 a mean-based outlier criterion.
 
 ## Citation
 
-Cannard, C., & Yeşilbaş, D. (2026). *Post-stimulus, but not pre-stimulus, neural
-differentiation of unpredictable car collisions in immersive virtual reality.*
+Cannard, C., & Yeşilbaş, D. (2026). *Reactive and predictive processes during
+unpredictable driving hazards in virtual reality: an exploratory brain and body
+study with multimodal neurophysiological monitoring.*
 
 ## License
 
