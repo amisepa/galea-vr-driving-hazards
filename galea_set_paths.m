@@ -53,10 +53,25 @@ paths.robust_correlations = fullfile(fileparts(paths.root), 'Robust-Correlations
 paths.analysis           = fullfile(paths.root, 'analysis');
 paths.analysis_functions = fullfile(paths.root, 'analysis', 'functions');
 paths.pipeline_functions = fullfile(paths.root, 'pipeline', 'functions');
-paths.plugin             = fullfile(paths.root, 'galea_eeglab_plugin');
+% EEGLAB plugin (github.com/amisepa/galea-eeglab-plugin). Developed and
+% released separately; expected cloned next to this repository. If you
+% installed it into eeglab/plugins/ instead, point paths.plugin there.
+paths.plugin             = fullfile(fileparts(paths.root), 'galea-eeglab-plugin');
 paths.plugin_functions   = fullfile(paths.plugin, 'functions');
 paths.plugin_sample_data = fullfile(paths.plugin, 'sample_data');
 paths.plugin_figures     = fullfile(paths.plugin, 'figures');
+if ~isfolder(paths.plugin)
+    % fall back to an EEGLAB-plugins install, then to a bundled copy
+    candidate = fullfile(paths.eeglab, 'plugins', 'galea_eeglab_plugin');
+    if isfolder(candidate)
+        paths.plugin = candidate;
+    else
+        paths.plugin = fullfile(paths.root, 'galea_eeglab_plugin');
+    end
+    paths.plugin_functions   = fullfile(paths.plugin, 'functions');
+    paths.plugin_sample_data = fullfile(paths.plugin, 'sample_data');
+    paths.plugin_figures     = fullfile(paths.plugin, 'figures');
+end
 paths.manuscript_figures = fullfile(paths.root, 'manuscript', 'figures');
 paths.data_repo          = fullfile(paths.root, 'data');
 
