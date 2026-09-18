@@ -1770,7 +1770,7 @@ children.push(P('The analysis code, the per-participant classification analyses 
   + 'importing and preprocessing recordings from this headset are openly available at '
   + 'https://github.com/amisepa/galea-vr-driving-hazards (GPL-3.0). The raw and preprocessed '
   + 'recordings are openly available in Brain Imaging Data Structure format with Hierarchical Event '
-  + 'Descriptor annotations at OpenNeuro (DOI: OPENNEURO_DOI), mirrored at NEMAR (https://www.nemar.org). '
+  + 'Descriptor annotations at OpenNeuro (doi: 10.18112/openneuro.ds008837.v1.0.0), mirrored at NEMAR (https://www.nemar.org). '
   + 'The Unity VR application is available on request from the authors: it incorporates '
   + 'commercially licensed assets that do not permit redistribution, so it cannot be published '
   + 'openly. The delivered quantum-random-number trial sequences are included in the BIDS '

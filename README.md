@@ -61,8 +61,9 @@ each later step reads only what earlier steps wrote.
 ### Step 1 — Data
 
 The raw and preprocessed recordings are openly available in BIDS format with
-HED annotations at OpenNeuro (DOI: OPENNEURO_DOI), mirrored at NEMAR
-(https://www.nemar.org). Download the dataset and point `paths.data` in
+HED annotations at OpenNeuro (https://doi.org/10.18112/openneuro.ds008837.v1.0.0),
+mirrored at NEMAR (https://www.nemar.org). Download the dataset and point
+`paths.data` in
 `galea_set_paths.m` at the folder containing the per-subject exports.
 
 The delivered quantum-random-number trial sequences are in
