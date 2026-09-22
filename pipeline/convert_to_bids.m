@@ -8,10 +8,11 @@
 %   (the pipeline output behind the paper's analyses) as a BIDS derivative.
 %
 %   raw          OpenBCI-RAW-*.txt  +  OpenBCI-RAW-Aux-*.txt
-%                -> continuous unprocessed EEG/EOG/EMG + PPG/EDA/IMU,
-%                   imported with the plugin (galea_import) so channel types,
-%                   device-derived sampling rates and marker labels are set,
-%                   then exported with bids_export.
+%                -> continuous unprocessed EEG/EOG/EMG at 250 Hz (main .set)
+%                   and PPG/EDA/IMU at the aux native ~50 Hz (second .set,
+%                   acq-aux entity), imported with the plugin (galea_import)
+%                   so channel types, device-derived sampling rates and
+%                   marker labels are set, then exported with bids_export.
 %   processed    OpenBCI-RAW-*.set  (epoched, ICA-cleaned, 12-channel EEG)
 %                -> derivatives/EEGPreprocessed/ as a BIDS derivative.
 %
@@ -23,7 +24,7 @@
 % OUTPUT
 %   <study data folder>/BIDS/
 %     dataset_description.json, participants.tsv/.json, README
-%     sub-XXX/eeg/sub-XXX_task-drivinghazard_eeg.set + _eeg.json
+%     sub-XXX/eeg/sub-XXX_task-vrCollisionHazard_eeg.set + _eeg.json
 %              + _channels.tsv + _events.tsv (+ _events.json with HED)
 %     derivatives/EEGPreprocessed/sub-XXX/eeg/...
 %
@@ -35,7 +36,7 @@
 % ------------------------------------------------------------------ setup
 clear; close all; clc
 paths = galea_set_paths();   % configure paths (edit galea_set_paths.m for your machine)
-addpath(fullfile(paths.eeglab, 'plugins', 'EEG-BIDS'));             % bids_export
+addpath(fullfile(paths.eeglab, 'plugins', 'EEG-BIDS'));             % bids_export, eeg_mergechannels
 addpath(fullfile(paths.eeglab, 'plugins', 'EEG-BIDS', 'JSONio'));   % jsonwrite/jsonread
 eeglab nogui;
 
@@ -45,39 +46,54 @@ bids_root       = fullfile(fileparts(paths.data), 'BIDS');
 subject_list = dir(fullfile(paths.data, 'sub-*'));
 subject_list = subject_list([subject_list.isdir]);
 subject_names = {subject_list.name};
-subject_names = setdiff(subject_names, 'sub-000');   % pilot subject excluded
+% PILOT-SUBSET for testing: revert to the full list for the full run.
+% subject_names = {'sub-018'};   % PILOT-SUBSET (uncomment for quick test)
+    subject_names = setdiff(subject_names, 'sub-000');   % pilot subject excluded
 subject_names = subject_names(~startsWith(subject_names, '.'));
 nSub = numel(subject_names);
 fprintf('Converting %d subjects (pilot sub-000 excluded)\n', nSub);
 
 % ------------------------------------------------- dataset_description
-gInfo.Name = 'Galea VR driving-hazards EEG/PPG dataset';
+gInfo.Name = 'Neural and physiological dynamics before and after unpredictable collision events in virtual reality';
 gInfo.BIDSVersion = '1.10';
 gInfo.HEDVersion = '8.1.0';
 gInfo.Authors = {'Cedric Cannard', 'Demet Yesilbas'};
-gInfo.ReferencesAndLinks = {'https://osf.io/xuw34'};
+gInfo.ReferencesAndLinks = {'Preregistration: https://osf.io/xuw34'};
 % Dataset licence: CC0-1.0 is the OpenNeuro norm for DATA (facts, no
 % copyright-protectable expression); the ANALYSIS CODE stays GPL-3.0.
 gInfo.License = 'CC0-1.0';
 
 README = [ ...
-  'BIDS version of the dataset for Cannard & Yesilbas (2026), "Reactive and ' ...
-  'predictive processes during unpredictable driving hazards in virtual reality" ' ...
-  '(preregistered at https://osf.io/xuw34).' newline newline ...
+  'BIDS dataset for Cannard & Yesilbas (2026), "Reactive and predictive ' ...
+  'processes during unpredictable driving hazards in virtual reality: an ' ...
+  'exploratory brain and body study with multimodal neurophysiological ' ...
+  'monitoring".' newline newline ...
+  'PREREGISTRATION: https://osf.io/xuw34 ("Neural and physiological dynamics ' ...
+  'before and after unpredictable collision events in virtual reality using ' ...
+  'novel wearable sensing"). Analysis code: ' ...
+  'https://github.com/amisepa/galea-vr-driving-hazards.' newline newline ...
   'Participants watched immersive VR driving scenes (Varjo Aero HMD) while EEG, ' ...
   'EOG, EMG, PPG, EDA and IMU were recorded with the Galea multimodal headset ' ...
   '(OpenBCI board, dry electrodes). 120 experimental trials per participant; ' ...
   'collision vs no-collision was assigned per trial by a quantum random number ' ...
-  'generator, independently at 50% probability. A baseline block preceded the ' ...
-  'experimental block.' newline newline ...
-  'Raw continuous recordings are in sub-XXX/eeg (EEG .set + events.tsv with ' ...
-  'HED 8.1.0 tags). The processed epochs used for the paper''s analyses are in ' ...
-  'derivatives/EEGPreprocessed/. Stimulus sequences are in the repository ' ...
-  '(data/stim_sequences_delivered).'];
+  'generator (ANU QRNG API), independently at 50% probability. A baseline ' ...
+  'block preceded the experimental block.' newline newline ...
+  'RAW layer: sub-XXX/eeg contains the continuous unprocessed recordings, as ' ...
+  'two EEGLAB .set files per run with _channels.tsv (typed), _eeg.json and ' ...
+  '_events.tsv (HED 8.1.0 annotated): the main recording (12 EEG + 2 EOG + 4 ' ...
+  'EMG channels at 250 Hz, task-vrCollisionHazard) and the peripheral ' ...
+  'recording (PPG, EDA and 9-axis IMU at their native ~50 Hz aux rate, ' ...
+  'acq-aux). No signal was resampled or filtered; EOG/EMG channels are ' ...
+  're-attached to the EEG set only because galea_import splits them out.' newline newline ...
+  'sourcedata/: the original unmodified OpenBCI recordings (.txt + Aux .txt ' ...
+  'and BrainFlow CSVs where present), as produced by the acquisition software.' newline newline ...
+  'DERIVATIVE: derivatives/EEGPreprocessed/ holds the epoched, ICA-cleaned ' ...
+  '12-channel EEG used for the paper''s analyses. Stimulus sequences are in ' ...
+  'the analysis repository (data/stim_sequences_delivered).'];
 
 % -------------------------------------------------------- task sidecar
 tInfo = struct();
-tInfo.TaskName = 'drivinghazard';
+tInfo.TaskName = 'vrCollisionHazard';
 tInfo.InstitutionName = 'Institute of Noetic Sciences';
 tInfo.InstitutionAddress = 'Petaluma, CA, USA';
 tInfo.PowerLineFrequency = 50;
@@ -88,9 +104,9 @@ tInfo.TriggerChannelCount = 0;
 
 % ----------------------------------------------- event column metadata
 eInfoDesc.onset.Description  = 'Event onset relative to recording start';
-eInfoDesc.onset.Units        = 'seconds';
+eInfoDesc.onset.Units        = 's';
 eInfoDesc.duration.Description = 'Event duration';
-eInfoDesc.duration.Units     = 'seconds';
+eInfoDesc.duration.Units     = 's';
 eInfoDesc.sample.Description = 'Event sample (MATLAB convention, starting at 1)';
 eInfoDesc.value.Description  = 'Original Unity/OpenBCI marker code';
 eInfoDesc.trial_type.Description = 'Experimental condition of the event';
@@ -152,15 +168,72 @@ for iSub = 1:nSub
         raw_txt = raw_txt(~contains({raw_txt.name}, 'Aux'));
         [~, order] = sort({raw_txt.name});        % chronological by timestamp
         raw_txt = raw_txt(order);
-        assert(~isempty(raw_txt), 'no main RAW file');
+        if isempty(raw_txt)
+            % No OpenBCI .txt main file: an auxiliary BrainFlow-only recording
+            % (e.g. a separate PPG/EDA capture). Its files are still copied to
+            % sourcedata/ below, but there is no EEG recording to convert, so
+            % the subject's BIDS layer only reflects the OpenBCI capture(s).
+            fprintf('  (no OpenBCI main recording; sourcedata only)\n');
+            src_only = true;
+        else
+            src_only = false;
+        end
+        assert(~src_only, 'no OpenBCI main recording to convert (sourcedata only)');
         nRuns = numel(raw_txt);
 
         stage_dir = fullfile(tempdir, 'galea_bids_stage');
         if ~exist(stage_dir, 'dir'), mkdir(stage_dir); end
-        files_i = cell(1, nRuns); runs_i = 1:nRuns;
+        files_i = cell(1, nRuns); aux_i = cell(1, nRuns); runs_i = 1:nRuns;
         for iRun = 1:nRuns
-            [EEG_raw, ~, ~, ~, ~, ~, ~] = galea_import('custom', raw_txt(iRun).name, sub_dir);
+            [EEG_raw, EOG_raw, EMG_raw, PPG_raw, EDA_raw, IMU_raw, ~] = galea_import('custom', raw_txt(iRun).name, sub_dir);
             EEG_raw = galea_rename_events(EEG_raw);
+            % Keep ALL EEG-scoped streams in the main recording, unmodified:
+            % undo only the channel split made by galea_import. EEGLAB data
+            % are [channels x samples], so appending channels is vertical
+            % concatenation; all three sets share the same 250 Hz time base.
+            eeg_chans = EEG_raw.nbchan;
+            for k = 1:eeg_chans,   EEG_raw.chanlocs(k).type = 'EEG'; end
+            for k = 1:EOG_raw.nbchan, EOG_raw.chanlocs(k).type = 'EOG'; end
+            for k = 1:EMG_raw.nbchan, EMG_raw.chanlocs(k).type = 'EMG'; end
+            EEG_raw.data     = [EEG_raw.data;     EOG_raw.data;     EMG_raw.data];
+            EEG_raw.chanlocs = [EEG_raw.chanlocs, EOG_raw.chanlocs, EMG_raw.chanlocs];
+            EEG_raw.nbchan   = eeg_chans + EOG_raw.nbchan + EMG_raw.nbchan;
+            EEG_raw = eeg_checkset(EEG_raw);
+
+            % SECOND .set at the aux native rate (~50 Hz): PPG/EDA/IMU as
+            % acquired, NOT resampled (acq-aux entity; BIDS sidecar _eeg.json
+            % lists its own SamplingFrequency). Battery/Board_temp are device
+            % health channels and are not exported.
+            % galea_import returns PPG / EDA / IMU as separate structures at
+            % the same aux rate and time base: stitch them back together.
+            AUX_raw = PPG_raw;
+            AUX_raw.data     = [PPG_raw.data; EDA_raw.data; IMU_raw.data];
+            AUX_raw.chanlocs = [PPG_raw.chanlocs, EDA_raw.chanlocs, IMU_raw.chanlocs];
+            AUX_raw.nbchan   = PPG_raw.nbchan + EDA_raw.nbchan + IMU_raw.nbchan;
+            for k = 1:AUX_raw.nbchan
+                lbl = AUX_raw.chanlocs(k).labels;
+                if any(strcmpi(lbl, {'PPG_red','PPG_IR'}))
+                    AUX_raw.chanlocs(k).type = 'PPG';
+                elseif strcmpi(lbl, 'EDA')
+                    AUX_raw.chanlocs(k).type = 'GSR';   % BIDS enum for electrodermal activity
+                else
+                    AUX_raw.chanlocs(k).type = 'MISC';   % IMU streams
+                end
+            end
+            AUX_raw = eeg_checkset(AUX_raw);
+            % The aux streams carry the same markers (borrowed inside
+            % galea_import for event latencies): rename + HED-tag them too.
+            AUX_raw = galea_rename_events(AUX_raw);
+            for iEv = 1:numel(AUX_raw.event)
+                row = strcmp(LABEL_HED(:, 1), AUX_raw.event(iEv).type);
+                if any(row)
+                    AUX_raw.event(iEv).trial_type = LABEL_HED{row, 2};
+                    AUX_raw.event(iEv).HED        = LABEL_HED{row, 3};
+                else
+                    AUX_raw.event(iEv).trial_type = 'n/a';
+                    AUX_raw.event(iEv).HED        = 'Event';
+                end
+            end
 
             % HED + trial_type on every event
             for iEv = 1:numel(EEG_raw.event)
@@ -173,23 +246,29 @@ for iSub = 1:nSub
                     EEG_raw.event(iEv).HED        = 'Event';
                 end
             end
-            EEG_raw = eeg_checkset(EEG_raw);
-
+            % Raw import as loaded by galea_import: 12 EEG + typed EOG/EMG
+            % channels, no filtering, no re-referencing, no epoching.
+            
             % bids_export deletes its target dir, so export goes to a staging
             % folder in temp and is moved into place afterwards.
             % unique staged filename per run (BIDS run entity comes from
             % data(iSub).run below); suffix only when there are several runs
             if nRuns > 1
-                EEG_raw.setname = sprintf('%s_task-drivinghazard_run-%02d', sub, iRun);
+                EEG_raw.setname = sprintf('%s_task-vrCollisionHazard_run-%02d', sub, iRun);
+                AUX_raw.setname = sprintf('%s_task-vrCollisionHazard_acq-aux_eeg_run-%02d', sub, iRun);
             else
-                EEG_raw.setname = sprintf('%s_task-drivinghazard', sub);
+                EEG_raw.setname = sprintf('%s_task-vrCollisionHazard', sub);
+                AUX_raw.setname = sprintf('%s_task-vrCollisionHazard_acq-aux_eeg', sub);
             end
             pop_saveset(EEG_raw, 'filename', [EEG_raw.setname '.set'], 'filepath', stage_dir);
+            pop_saveset(AUX_raw, 'filename', [AUX_raw.setname '.set'], 'filepath', stage_dir);
+            aux_i{iRun} = fullfile(stage_dir, [AUX_raw.setname '.set']);
             files_i{iRun} = fullfile(stage_dir, [EEG_raw.setname '.set']);
         end
         data(iSub).file    = files_i;
+        data(iSub).auxfile = aux_i;   % reference only: not passed to bids_export
         data(iSub).session = ones(1, nRuns);
-        data(iSub).run     = runs_i;
+        data(iSub).run     = arrayfun(@(r) sprintf('%02d', r), runs_i, 'UniformOutput', false);
 
         % ---- 2. PROCESSED epochs: HED-tag now, write after the export --
         set_files = dir(fullfile(sub_dir, 'OpenBCI-RAW-*.set'));
@@ -212,7 +291,7 @@ for iSub = 1:nSub
             if ~exist(proc_dir, 'dir'), mkdir(proc_dir); end
             run_tag = '';
             if numel(set_files) > 1, run_tag = sprintf('_run-%02d', iRun); end
-            base = sprintf('%s_task-drivinghazard_proc_epoched%s', sub, run_tag);
+            base = sprintf('%s_task-vrCollisionHazard_proc_epoched%s', sub, run_tag);
             pop_saveset(EEG_proc, 'filename', [base '.set'], 'filepath', proc_dir);
             % events sidecar (onset/sample/value/trial_type/HED) for the derivative.
             % bids_writeeventfile has an finputcheck quirk with its own
@@ -237,6 +316,13 @@ for iSub = 1:nSub
             % is declared in the EEG sidecar's HEDVersion field.
             jsonwrite(fullfile(proc_dir, [base '_events.json']), eInfoDesc, struct('indent', '  '));
         end
+        % ---- 3. SOURCEDATA: original OpenBCI files, unmodified ----------
+        src_dir = fullfile(stage_dir, 'sourcedata', sub);
+        if ~exist(src_dir, 'dir'), mkdir(src_dir); end
+        srcFiles = [dir(fullfile(sub_dir, 'OpenBCI-*.txt')); dir(fullfile(sub_dir, 'BrainFlow-*.csv')); dir(fullfile(sub_dir, 'Timestamp_*.txt'))];
+        for iSrc = 1:numel(srcFiles)
+            copyfile(fullfile(srcFiles(iSrc).folder, srcFiles(iSrc).name), fullfile(src_dir, srcFiles(iSrc).name));
+        end
         nOK = nOK + 1;
     catch err
         fprintf('  FAILED: %s\n', err.message);
@@ -256,12 +342,72 @@ bids_export(data, ...
     'trialtype', LABEL_HED(:, 1:2), ...
     'README', README, ...
     'interactive', 'off', ...
+    'modality', 'eeg', ...
     'exportformat', 'eeglab');
 
-% move the staged derivative into the exported tree
-if exist(fullfile(tempdir, 'galea_bids_stage', 'derivatives'), 'dir')
-    moved = movefile(fullfile(tempdir, 'galea_bids_stage', 'derivatives'), fullfile(bids_root, 'derivatives'));
-    fprintf('Derivative moved into BIDS tree: %d\n', moved);
+% copy the staged acq-aux recordings into each subject's eeg/ folder
+% (bids_export only handles the main EEG files; the aux-rate peripheral
+%  .set files are plain copies with no sidecar beyond what bids_export
+%  would write, so we write their channels.tsv/eeg.json directly below)
+auxFiles = dir(fullfile(tempdir, 'galea_bids_stage', 'sub-*_acq-aux*.set'));
+fprintf('Copying %d acq-aux recordings...\n', numel(auxFiles));
+for iAux = 1:numel(auxFiles)
+    tok = regexp(auxFiles(iAux).name, '^(sub-\d+)_task-vrCollisionHazard(_acq-aux_eeg)(_run-(\d+))?\.set$', 'tokens', 'once');
+    if isempty(tok), continue; end
+    auxSub = tok{1};
+    if numel(tok) >= 4, auxRun = tok{4}; else, auxRun = ''; end
+    destDir = fullfile(bids_root, auxSub, 'eeg');
+    if ~exist(destDir, 'dir'), mkdir(destDir); end
+    copyfile(fullfile(auxFiles(iAux).folder, auxFiles(iAux).name), ...
+             fullfile(destDir, auxFiles(iAux).name));
+    % channels.tsv for the aux recording (typed)
+    fid = fopen(fullfile(destDir, strrep(auxFiles(iAux).name, '_eeg.set', '_channels.tsv')), 'w');
+    fprintf(fid, 'name\ttype\tunits\n');
+    auxEEG = pop_loadset('filename', auxFiles(iAux).name, 'filepath', auxFiles(iAux).folder);
+    for k = 1:auxEEG.nbchan
+        ty = 'MISC'; un = 'n/a';
+        if isfield(auxEEG.chanlocs, 'type') && ~isempty(auxEEG.chanlocs(k).type), ty = upper(auxEEG.chanlocs(k).type); end
+        if strcmpi(ty, 'PPG') || strcmpi(ty, 'GSR'), un = 'V'; else, un = 'n/a'; end
+        fprintf(fid, '%s\t%s\t%s\n', auxEEG.chanlocs(k).labels, ty, un);
+    end
+    fclose(fid);
+    % eeg.json sidecar for the aux recording
+    auxInfo = struct();
+    auxInfo.TaskName = 'vrCollisionHazard';
+    auxInfo.TaskDescription = 'Peripheral physiological streams of the vrCollisionHazard task at their native sampling rate';
+    auxInfo.SamplingFrequency = auxEEG.srate;
+    auxInfo.EEGChannelCount = 0;
+    auxInfo.MiscChannelCount = sum(cellfun(@(c) any(strcmpi(c, {'ACC_X','ACC_Y','ACC_Z','GYR_X','GYR_Y','GYR_Z','MEG_X','MEG_Y','MEG_Z'})), {auxEEG.chanlocs.labels}));
+    auxInfo.PPGChannelCount = sum(strcmpi({auxEEG.chanlocs.labels}, 'PPG_red')) + sum(strcmpi({auxEEG.chanlocs.labels}, 'PPG_IR'));
+    auxInfo.EDACHannelCount = sum(strcmpi({auxEEG.chanlocs.labels}, 'EDA'));
+    auxInfo.Manufacturer = tInfo.Manufacturer;
+    auxInfo.ManufacturersModelName = tInfo.ManufacturersModelName;
+    auxInfo.InstitutionName = tInfo.InstitutionName;
+    auxInfo.InstitutionAddress = tInfo.InstitutionAddress;
+    auxInfo.PowerLineFrequency = tInfo.PowerLineFrequency;
+    auxInfo.EEGReference = 'n/a (no EEG channels in this recording)';
+    jsonwrite(fullfile(destDir, strrep(auxFiles(iAux).name, '_eeg.set', '_eeg.json')), auxInfo, struct('indent', '  '));
+    % events.tsv for the aux recording (BIDS requires events for every
+    % recording in the EEG modality folder; same markers as the main .set)
+    ev = auxEEG.event;
+    fid = fopen(fullfile(destDir, strrep(auxFiles(iAux).name, '_eeg.set', '_events.tsv')), 'w');
+    fprintf(fid, 'onset\tduration\tsample\tvalue\ttrial_type\tHED\n');
+    if ~isempty(ev)
+        for iEv = 1:numel(ev)
+            dur = 0; if isfield(ev, 'duration'), dur = ev(iEv).duration; end
+            tt = 'n/a'; hed = 'Event';
+            if isfield(ev, 'trial_type'), tt = ev(iEv).trial_type; end
+            if isfield(ev, 'HED'), hed = ev(iEv).HED; end
+            fprintf(fid, '%.6f\t%.6f\t%d\t%s\t%s\t%s\n', ...
+                (ev(iEv).latency-1)/auxEEG.srate, dur, ev(iEv).latency, ev(iEv).type, tt, hed);
+        end
+    end
+    fclose(fid);
+    fprintf('  %s (%d ch @ %g Hz)\n', auxFiles(iAux).name, auxEEG.nbchan, auxEEG.srate);
+end
+if exist(fullfile(tempdir, 'galea_bids_stage', 'sourcedata'), 'dir')
+    moved2 = movefile(fullfile(tempdir, 'galea_bids_stage', 'sourcedata'), fullfile(bids_root, 'sourcedata'));
+    fprintf('sourcedata moved into BIDS tree: %d\n', moved2);
 end
 
 fprintf('\nDONE: %d subjects exported, %d failed.\nBIDS root: %s\n', nOK, nFail, bids_root);
