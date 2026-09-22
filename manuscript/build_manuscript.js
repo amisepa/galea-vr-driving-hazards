@@ -906,7 +906,7 @@ children.push(P('ICA was performed with the Preconditioned ICA for Real Data alg
   + 'required removal of a second ocular component.'));
 
 children.push(P('The full pipeline is implemented as an EEGLAB plugin released with this study '
-  + '(https://github.com/amisepa/galea-vr-driving-hazards); its import and preprocessing dialogs, with the defaults used for '
+  + '(https://github.com/amisepa/galea-eeglab-plugin); its import and preprocessing dialogs, with the defaults used for '
   + 'this study, are shown in Figure 2.'));
 
 children.push(FIGURE('figure2_methods_gui.png'));
@@ -1768,7 +1768,7 @@ children.push(P('The study was approved by the Institute of Noetic Sciences Inst
 children.push(H1('Data availability statement'));
 children.push(P('The analysis code, the per-participant classification analyses and an EEGLAB plugin for '
   + 'importing and preprocessing recordings from this headset are openly available at '
-  + 'https://github.com/amisepa/galea-vr-driving-hazards (GPL-3.0). The raw and preprocessed '
+  + 'https://github.com/amisepa/galea-eeglab-plugin (GPL-3.0). The raw and preprocessed '
   + 'recordings are openly available in Brain Imaging Data Structure format with Hierarchical Event '
   + 'Descriptor annotations at OpenNeuro (doi: 10.18112/openneuro.ds008837.v1.0.0), mirrored at NEMAR (https://www.nemar.org). '
   + 'The Unity VR application is available on request from the authors: it incorporates '
