@@ -1766,9 +1766,11 @@ children.push(P('The study was approved by the Institute of Noetic Sciences Inst
 }
 
 children.push(H1('Data availability statement'));
-children.push(P('The analysis code, the per-participant classification analyses and an EEGLAB plugin for '
-  + 'importing and preprocessing recordings from this headset are openly available at '
-  + 'https://github.com/amisepa/galea-eeglab-plugin (GPL-3.0). The raw and preprocessed '
+children.push(P('The analysis code, the per-participant classification analyses and the BIDS conversion '
+  + 'pipeline are openly available at https://github.com/amisepa/galea-vr-driving-hazards (GPL-3.0); '
+  + 'the EEGLAB plugin for importing and preprocessing recordings from this headset, with a step-by-step '
+  + 'tutorial and sample data, is released separately at https://github.com/amisepa/galea-eeglab-plugin '
+  + '(GPL-3.0) and installable from the EEGLAB extension manager. The raw and preprocessed '
   + 'recordings are openly available in Brain Imaging Data Structure format with Hierarchical Event '
   + 'Descriptor annotations at OpenNeuro (doi: 10.18112/openneuro.ds008837.v1.0.0), mirrored at NEMAR (https://www.nemar.org). '
   + 'The Unity VR application is available on request from the authors: it incorporates '
