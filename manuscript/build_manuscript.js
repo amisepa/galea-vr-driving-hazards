@@ -1772,7 +1772,7 @@ children.push(P('The analysis code, the per-participant classification analyses 
   + 'tutorial and sample data, is released separately at https://github.com/amisepa/galea-eeglab-plugin '
   + '(GPL-3.0) and installable from the EEGLAB extension manager. The raw and preprocessed '
   + 'recordings are openly available in Brain Imaging Data Structure format with Hierarchical Event '
-  + 'Descriptor annotations at OpenNeuro (doi: 10.18112/openneuro.ds008837.v1.0.0), mirrored at NEMAR (https://www.nemar.org). '
+  + 'Descriptor annotations at OpenNeuro (doi: 10.18112/openneuro.ds008837), mirrored at NEMAR (https://www.nemar.org). '
   + 'The Unity VR application is available on request from the authors: it incorporates '
   + 'commercially licensed assets that do not permit redistribution, so it cannot be published '
   + 'openly. The delivered quantum-random-number trial sequences are included in the BIDS '
