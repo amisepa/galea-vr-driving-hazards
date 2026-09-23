@@ -1480,12 +1480,12 @@ children.push(PR([
 
 children.push(H2('3.7 Cardiac response'));
 children.push(P('The hierarchical permutation GLM revealed no significant difference in event-related heart rate '
-  + 'between conditions in the post-stimulus window (0 to +5 s; all permutation p > 0.37). No significant '
+  + 'between conditions in the post-stimulus window (0 to +5 s; all permutation p > 0.37; Figure 5). No significant '
   + 'anticipatory difference was observed in the pre-stimulus window (−5 to 0 s) after correction, although a '
   + 'single time point near −4 s reached a nominally negative value (t ≈ −2.3, uncorrected p = 0.033) that did '
   + 'not survive correction. Both conditions produced closely overlapping absolute heart-rate trajectories '
   + 'averaging approximately 71–72 bpm, with wide CIs reflecting substantial between-participant '
-  + 'variability.'));
+  + 'variability (Figure 5).'));
 
 children.push(FIGURE('figure5_cardiac.png'));
 children.push(CAPTION('Figure 5.', 'Event-related heart rate (N = 14). (A) Each condition referenced to its '
