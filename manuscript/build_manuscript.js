@@ -912,11 +912,12 @@ children.push(P('The full pipeline is implemented as an EEGLAB plugin released w
 children.push(FIGURE('figure2_methods_gui.png'));
 children.push(CAPTION('Figure 2.', 'The EEGLAB plugin released with this study. (A) Import dialog: the '
   + 'Galea/OpenBCI main file is selected and its Aux twin (PPG, EDA, IMU) is picked up automatically. '
-  + '(B) Preprocessing dialog with the defaults used here: 0.5\u201330 Hz minimum-phase bandpass on request, '
-  + 'bad-channel detection (correlation threshold 0.55, the lowest 20% of correlations discarded, removal above '
-  + '30% of windows), ASR at threshold 100 in remove mode (flagged segments '
-  + 'deleted, with any event markers inside them reported), ocular independent component removal with '
-  + 'confirmation, and a separate dialog for the cardiac (PPG), EDA, EMG and IMU branches.'));
+  + '(B) Main dialog with the defaults used here: trimming, data type (continuous or ERP), second-pass ASR '
+  + 'and output options. (C) EEG preprocessing options: 0.5\u201330 Hz minimum-phase bandpass on request, '
+  + 'bad-channel detection (correlation threshold 0.55, removal above 30% of windows), ASR at threshold 100 in '
+  + 'remove mode (flagged segments deleted, with any event markers inside them reported), ocular independent '
+  + 'component removal with confirmation, and EOG processing. (D) Peripheral signal processing: cardiac (PPG) '
+  + 'with RR-interval cleaning and HRV features via the BrainBeats plugin, EDA, EMG and IMU branches.'));
 
 children.push(PR([
   [`Data were segmented from −3000 to +3000 ms relative to the tire-blowout markers (event codes tire_pop `
