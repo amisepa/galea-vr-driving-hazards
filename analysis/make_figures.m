@@ -12,7 +12,7 @@
 %   figure4_tf_normalisations.png  time-frequency t-maps, both windows x both normalisations
 %   figure5_cardiac.png      group heart rate, both conditions and the difference
 %
-% Figure 1 itself is a vector schematic, manuscript/figures/figure1_overview.svg;
+% Figure 1 itself is a vector schematic, figures/figure1_overview.svg;
 % it embeds the two methods_*.png panels produced here.
 %
 % The Methods panels deliberately show ONE participant. Putting the group
@@ -37,7 +37,7 @@ EEGLAB_PATH = paths.eeglab;
 ROOT        = paths.root;
 RAW         = paths.data;
 RES         = fullfile(ROOT, 'results_final');
-FIG         = fullfile(ROOT, 'manuscript', 'figures');
+FIG         = fullfile(ROOT, 'figures');
 
 EX_SUB     = 'sub-013';   % example participant shown in the Methods figure
 EX_CHAN    = 'mean';      % 'mean' for the 12-channel average, or a label e.g. 'C3'

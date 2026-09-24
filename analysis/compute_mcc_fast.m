@@ -8,8 +8,7 @@ function [mask, pcorr, max_th] = compute_mcc_fast(tvals, pvals, tvals_H0, pvals_
 % that every analysis in the project goes through the one correction routine,
 % analysis/cluster_correct.m. Prefer calling that directly in new code.
 %
-% Behaviour differs from the old compute_mcc_fast in three ways, all deliberate,
-% all documented in manuscript/stats_review_2026-08.md:
+% Behaviour differs from the old compute_mcc_fast in three deliberate ways:
 %   - standard adjacency clustering (minchan = 0) rather than minnbchan = 2;
 %   - positive and negative t clustered separately;
 %   - a fixed cluster-forming t threshold applied identically to the observed

@@ -319,8 +319,8 @@ writetable(table(uSub(:), perSub, nTr(:,1), nTr(:,2), ...
     'VariableNames', {'sub','effect_dB','n_collision','n_nocollision'}), ...
     fullfile(RES,'prestim_persubject.csv'));
 
-%% ---- tidy summary for the manuscript ------------------------------------
-% build_manuscript.js reads this rather than having the numbers typed into it,
+%% ---- tidy summary table ----------------------------------------------------
+% The paper's numbers come from this file rather than being typed by hand,
 % so a re-run cannot leave the text disagreeing with the results.
 SUM = cell2table(SUMROWS, 'VariableNames', {'stat','value','t','df','p','n'});
 writetable(SUM, fullfile(RES,'prestim_controls_summary.csv'));

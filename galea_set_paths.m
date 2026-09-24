@@ -61,22 +61,20 @@ paths.plugin_functions   = fullfile(paths.plugin, 'functions');
 paths.plugin_sample_data = fullfile(paths.plugin, 'sample_data');
 paths.plugin_figures     = fullfile(paths.plugin, 'figures');
 if ~isfolder(paths.plugin)
-    % fall back to an EEGLAB-plugins install, then to a bundled copy
-    candidate = fullfile(paths.eeglab, 'plugins', 'galea_eeglab_plugin');
-    if isfolder(candidate)
-        paths.plugin = candidate;
-    else
-        paths.plugin = fullfile(paths.root, 'galea_eeglab_plugin');
+    % fall back to an EEGLAB extension-manager install (eeglab/plugins/galea<version>)
+    d = dir(fullfile(paths.eeglab, 'plugins', 'galea*'));
+    d = d([d.isdir]);
+    if ~isempty(d)
+        paths.plugin = fullfile(d(end).folder, d(end).name);
     end
     paths.plugin_functions   = fullfile(paths.plugin, 'functions');
     paths.plugin_sample_data = fullfile(paths.plugin, 'sample_data');
     paths.plugin_figures     = fullfile(paths.plugin, 'figures');
 end
-paths.manuscript_figures = fullfile(paths.root, 'manuscript', 'figures');
+paths.figures            = fullfile(paths.root, 'figures');
 paths.data_repo          = fullfile(paths.root, 'data');
 
-% Results folders (written by the run_final_* scripts, read by make_figures.m
-% and the manuscript builder)
+% Results folders (written by the run_final_* scripts, read by make_figures.m)
 results = fullfile(paths.root, 'results_final');
 paths.results        = results;
 paths.res_time       = fullfile(results, 'EEG_time');
@@ -90,8 +88,8 @@ paths.res_ml         = fullfile(results, 'ML');
 paths.ml_dataset    = fullfile(paths.data_repo, 'galea_ML_dataset.mat');
 paths.questionnaires = fullfile(paths.data, 'participant_data', 'subjects_questionnaires_data.xlsx');
 
-% EEGLAB plugin folders whose stub functions shadow MATLAB built-ins during
-% batch runs; analysis/run_gui_capture_desktop.m removes them from the path.
+% EEGLAB plugin folders whose stub functions shadow MATLAB built-ins in batch
+% runs; remove them from the path if a built-in is shadowed.
 paths.eeglab_fieldtrip_compat = fullfile(paths.eeglab, 'plugins', 'Fieldtrip-lite250523', 'compat');
 paths.eeglab_biosig_stubs     = fullfile(paths.eeglab, 'plugins', 'Biosig3.8.5', 'biosig', 'maybe-missing');
 

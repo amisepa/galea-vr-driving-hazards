@@ -184,7 +184,7 @@ for src = {'per','ocular','muscle'}
         v, tanh(mean(z)), sz.df, sz.tstat, pz, sum(rr>0), numel(rr));
     COUP(end+1,:) = {v, tanh(mean(z)), sz.tstat, sz.df, pz, sum(rr>0), numel(rr)}; %#ok<SAGROW>
 end
-% Exported because build_manuscript.js quotes this coupling value in Section 3.5.
+% Exported because the paper quotes this coupling value in Section 3.5.
 % Any statistic the prose names must come from a file, never from a number typed
 % into the text: a re-run that moves it would otherwise leave the paper wrong
 % with nothing to catch it.

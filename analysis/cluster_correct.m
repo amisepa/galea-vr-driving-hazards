@@ -5,8 +5,8 @@ function [mask, pcorr, info] = cluster_correct(tvals, tvals_H0, opts)
 % every analysis in this project.
 %
 % Replaces compute_mcc/correct_cluster, compute_mcc_fast and the local
-% compute_mcc_tf, which had drifted apart. See manuscript/stats_review_2026-08.md
-% for what each of them did differently and why this exists.
+% compute_mcc_tf, which had drifted apart; the three points below are what
+% each of them did differently and why this exists.
 %
 % Three things this fixes relative to correct_cluster.m:
 %

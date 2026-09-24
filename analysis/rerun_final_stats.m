@@ -4,7 +4,7 @@
 %
 % Replaces run_final_EEG_erp.m + run_final_EEG_prestim.m +
 % run_final_EEG_clusters_limo.m + run_final_EEG_clusters_both.m, which had
-% drifted apart. See manuscript/stats_review_2026-08.md.
+% drifted apart.
 %
 % What this produces, for the post-stimulus and pre-stimulus windows:
 %

@@ -5,7 +5,7 @@
 Reads the analysis outputs directly (no numbers typed):
   results_final/EEG_tf_causal/h4_tf_symmetry.csv
   results_final/EEG_tf_causal/h4_tf_symmetry_group.csv
-Writes manuscript/figures/figureS2_h4_forest.png at print resolution.
+Writes figures/figureS1_h4_forest.png at print resolution.
 """
 import csv
 import os
@@ -19,7 +19,7 @@ import os
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CSV = os.path.join(ROOT, 'results_final', 'EEG_tf_causal', 'h4_tf_symmetry.csv')
 GRP = os.path.join(ROOT, 'results_final', 'EEG_tf_causal', 'h4_tf_symmetry_group.csv')
-OUT = os.path.join(ROOT, 'manuscript', 'figures', 'figureS2_h4_forest.png')
+OUT = os.path.join(ROOT, 'figures', 'figureS1_h4_forest.png')
 
 with open(CSV) as f:
     rows = list(csv.DictReader(f))
