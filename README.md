@@ -8,7 +8,8 @@ reality, recorded with the Galea multimodal headset (OpenBCI) integrated into a 
 Cannard, C., & Yeşilbaş, D. (2026). *Reactive and predictive processes during
 unpredictable driving hazards in virtual reality: an exploratory brain and body
 study with multimodal neurophysiological monitoring.* Supported by the BIAL
-Foundation. Preregistered at [osf.io/xuw34](https://osf.io/xuw34).
+Foundation. Preregistered at [osf.io/xuw34](https://osf.io/xuw34). A preprint of
+this article is available on [bioRxiv](https://www.biorxiv.org/content/10.64898/2026.09.24.754154v2).
 
 ## Layout
 
@@ -21,7 +22,7 @@ Foundation. Preregistered at [osf.io/xuw34](https://osf.io/xuw34).
 | `data/` | `stim_sequences_delivered/` (the quantum-randomised 120-trial sequence actually delivered to each subject, copied from the acquisition drive), the exported classification dataset, and `random_stim_sequences/` (sequence-generation code and diagnostics). |
 
 Study data (raw recordings, per-subject exports), grant/admin documents, the Unity VR program and archived code live on Proton Drive under
-`DATA/IONS_Galea_VR_study/` (`study_data/`, `grant_admin/`, `unity_vr_program/`, `code_archive/`).
+`DATA/IONS_Galea_VR_study/` (`study_data/`, `grant_admin/`, `IONS_cedric_Galea_VR_Unity_Driving_program/`, `code_archive/`).
 
 ## The EEGLAB plugin
 
