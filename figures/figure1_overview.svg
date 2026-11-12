@@ -155,26 +155,20 @@
 <text x="1190" y="1222" class="m">five TIPI-10 traits. All 26 null.</text>
 
 <text x="1650" y="616" class="h">2 &#160;LOSO decoding</text>
-<text x="1650" y="650" class="t">leave one subject out, 15 folds</text>
+<text x="1650" y="650" class="t">leave one subject out, 16 folds</text>
 
 <g transform="translate(1650,670)">
-  <rect x="0" y="0" width="25" height="25" rx="4" fill="#B23A2E"/>
+  <rect x="0" y="0" width="23" height="25" rx="4" fill="#B23A2E"/>
   <g fill="#C9D1D8">
-    <rect x="28"  y="0" width="25" height="25" rx="4"/><rect x="56"  y="0" width="25" height="25" rx="4"/>
-    <rect x="84"  y="0" width="25" height="25" rx="4"/><rect x="112" y="0" width="25" height="25" rx="4"/>
-    <rect x="140" y="0" width="25" height="25" rx="4"/><rect x="168" y="0" width="25" height="25" rx="4"/>
-    <rect x="196" y="0" width="25" height="25" rx="4"/><rect x="224" y="0" width="25" height="25" rx="4"/>
-    <rect x="252" y="0" width="25" height="25" rx="4"/><rect x="280" y="0" width="25" height="25" rx="4"/>
-    <rect x="308" y="0" width="25" height="25" rx="4"/><rect x="336" y="0" width="25" height="25" rx="4"/>
-    <rect x="364" y="0" width="25" height="25" rx="4"/><rect x="392" y="0" width="25" height="25" rx="4"/>
+    <rect x="26" y="0" width="23" height="25" rx="4"/><rect x="52" y="0" width="23" height="25" rx="4"/><rect x="78" y="0" width="23" height="25" rx="4"/><rect x="104" y="0" width="23" height="25" rx="4"/><rect x="130" y="0" width="23" height="25" rx="4"/><rect x="156" y="0" width="23" height="25" rx="4"/><rect x="182" y="0" width="23" height="25" rx="4"/><rect x="208" y="0" width="23" height="25" rx="4"/><rect x="234" y="0" width="23" height="25" rx="4"/><rect x="260" y="0" width="23" height="25" rx="4"/><rect x="286" y="0" width="23" height="25" rx="4"/><rect x="312" y="0" width="23" height="25" rx="4"/><rect x="338" y="0" width="23" height="25" rx="4"/><rect x="364" y="0" width="23" height="25" rx="4"/><rect x="390" y="0" width="23" height="25" rx="4"/>
   </g>
 </g>
 <text x="1650" y="736" class="m">z-scoring fitted on training folds only</text>
 
 <text x="1650" y="782" class="b">Input</text>
 <text x="1650" y="816" class="t">trial-averaged ERP time course</text>
-<text x="1650" y="844" class="m">0 to 1000 ms, 30 observations (15 &#215; 2)</text>
-<text x="1650" y="872" class="m">12 chan &#215; 248 points = 2976 features</text>
+<text x="1650" y="844" class="m">0 to 1200 ms, 32 observations (16 &#215; 2)</text>
+<text x="1650" y="872" class="m">12 chan &#215; 298 points = 3576 features</text>
 
 <text x="1650" y="918" class="b">Six classifiers</text>
 <text x="1650" y="952" class="t">SVM (RBF) &#183; MLP (5 hidden units)</text>

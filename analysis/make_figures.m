@@ -102,7 +102,7 @@ yline(ax, 0, 'Color', [0.79 0.82 0.85], 'LineWidth', 0.7);
 xline(ax, 0, '--', 'Color', INK, 'LineWidth', 0.9);
 xlim(ax, [-1500 1500]);
 xlabel(ax, 'Time from tire blowout (ms)');
-ylabel(ax, 'Amplitude (\muV)');
+ylabel(ax, 'Amplitude');
 legend(ax, [h1 h2], {'collision', 'no-collision'}, 'Box', 'off', ...
        'FontSize', 7, 'Location', 'northwest');
 yl = ylim(ax);
@@ -203,7 +203,7 @@ for k = 1:nCl
     xline(ax, 0, '--', 'Color', INK, 'LineWidth', 0.9);
     xlabel(ax, 'Time from tire blowout (ms)');
     if k == 1
-        ylabel(ax, 'Amplitude (\muV)');
+        ylabel(ax, 'Amplitude');
         legend(ax, [h1 h2], {'collision', 'no-collision'}, 'Box', 'off', ...
                'FontSize', 6.5, 'Location', 'southwest');
     else
@@ -223,7 +223,7 @@ for k = 1:nCl
              'style', 'map', 'shading', 'interp', 'conv', 'on', 'whitebk', 'on', ...
              'headrad', 0.5, 'emarker', {'.', 'k', 4, 1});
     colormap(axi, CMAP);
-    text(axi, 0, -0.72, sprintf('%+.1f \\muV at %s', diff(ci), chanOf(k)), ...
+    text(axi, 0, -0.72, sprintf('%+.1f at %s', diff(ci), chanOf(k)), ...
          'FontSize', 5.8, 'Color', MUT, 'HorizontalAlignment', 'center');
 end
 apply_cmap(f, CMAP);
@@ -437,9 +437,13 @@ f = newfig(7.2, 2.2);
 axF = axes('Parent', f, 'Position', [0.085 0.22 0.83 0.68]); hold(axF, 'on');
 COLF = {[0.65 0.40 0.15], [0.15 0.35 0.65]};             % pre warm / post blue
 BANDF = {[0.93 0.88 0.82], [0.85 0.89 0.94]};
+% foi and mF(:,iW) are COLUMNS: concatenate vertically with flipud. The
+% row-vector idiom [x, fliplr(x)] on columns builds a 2-column matrix that fill()
+% draws as two separate polygons (each curve closed on its own chord), which
+% leaves white wedges inside the band instead of the +-1 s.e.m. ribbon.
 for iW = 1:2
-    fill(axF, [foi, fliplr(foi)], ...
-         [mF(:,iW)+seF(:,iW), fliplr(mF(:,iW)-seF(:,iW))], BANDF{iW}, ...
+    fill(axF, [foi; flipud(foi)], ...
+         [mF(:,iW)+seF(:,iW); flipud(mF(:,iW)-seF(:,iW))], BANDF{iW}, ...
          'EdgeColor', 'none');
 end
 plot(axF, [3 30], [0 0], 'k-', 'LineWidth', 0.5);
