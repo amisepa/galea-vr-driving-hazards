@@ -16,8 +16,13 @@ detect_mode = 'valleys'; % detect 'valleys' (default) or 'peaks' for heartbeats
 epoch_lims = [-5 5];   % epoch window in seconds
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-load(fullfile(datapath, 'sInfo_ppg.mat'))
-fprintf('Last subject processed: %g\n', sInfo(end).subject)
+% Preprocessing log, one entry per recording (created on the first run)
+if isfile(fullfile(datapath, 'sInfo_ppg.mat'))
+    load(fullfile(datapath, 'sInfo_ppg.mat'))
+    fprintf('Last subject processed: %g\n', sInfo(end).subject)
+else
+    sInfo = [];
+end
 
 % Import data
 [~, ~, ~, PPG] = galea_import();  

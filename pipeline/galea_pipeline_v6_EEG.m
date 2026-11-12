@@ -19,8 +19,13 @@ asr_sd = 100;            % ASR SD threshold (conservative default = 100)
 epoch_lims = [-3 3];    % limits -1500 ms to +1500 ms
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-load(fullfile(datapath, 'sInfo.mat'))
-fprintf('Last subject processed: %g\n', sInfo(end).subject)
+% Preprocessing log, one entry per recording (created on the first run)
+if isfile(fullfile(datapath, 'sInfo.mat'))
+    load(fullfile(datapath, 'sInfo.mat'))
+    fprintf('Last subject processed: %g\n', sInfo(end).subject)
+else
+    sInfo = [];
+end
 
 % Import data
 [EEG, EOG, EMG, PPG, EDA, IMU, AUX] = galea_import(montage);  

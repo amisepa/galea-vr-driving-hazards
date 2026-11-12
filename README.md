@@ -64,8 +64,10 @@ doi: [10.18112/openneuro.ds008837.vv1.1.2](https://doi.org/10.18112/openneuro.ds
 Each `sub-XXX/eeg` folder holds the continuous, unprocessed recordings, and
 `sourcedata/` holds the original OpenBCI files as written by the acquisition
 software. The preprocessed data are not part of the dataset; they are produced
-by Step 2. Point `paths.data` in `galea_set_paths.m` at the folder that holds
-the per-subject recordings and exports.
+by Step 2. Point `paths.data` in `galea_set_paths.m` at the downloaded
+`sourcedata/` folder: it has one `sub-XXX` folder per participant, which is the
+layout the pipeline reads, and every per-subject output is written next to the
+recordings it came from.
 
 The delivered quantum-random-number trial sequences are in
 `data/stim_sequences_delivered/` (one CSV per subject) and inside the BIDS
@@ -78,14 +80,26 @@ diagnostics for the qRNG sequences themselves.
 galea_set_paths;                      % verify paths resolve
 pipeline/galea_pipeline_v6_EEG.m     % per-subject EEG: import, causal filter, bad channels, ASR, ICA
 pipeline/galea_pipeline_v5_ppg.m     % per-subject heart-rate exports (ERP_PPG.mat) for the cardiac analysis
+pipeline/fix_sub011_erp_export.m     % sub-011 only, after its two recordings are preprocessed
 ```
 
 Notes:
 
-- `galea_pipeline_v6_EEG.m` is the current EEG pipeline; it calls the plugin's
-  import and preprocessing functions subject by subject.
-- The one-off repair `pipeline/fix_sub011_erp_export.m` has already been
-  applied to the OpenNeuro data; you do not need to run it.
+- Both pipelines process one recording per run: a dialog asks for the main
+  `OpenBCI-RAW-*.txt` file (not the `-Aux-` file) in a `sub-XXX` folder. Run
+  them once per participant, starting with `sub-001`; each run writes the
+  epoched `.set` file and `ERP_EEG_new.mat` (or `ERP_PPG.mat`) into that
+  folder and appends to the preprocessing logs `sInfo.mat` / `sInfo_ppg.mat`
+  in `paths.data`.
+- ICA (PICARD) is seeded and the channel, artifact and component rejection
+  steps are automatic, so reruns are repeatable. Expect small numerical
+  differences from the paper's per-subject exports if your EEGLAB or plugin
+  versions differ.
+- sub-011's session was interrupted and recorded as two files. Preprocess both,
+  then run `fix_sub011_erp_export.m` (see below for why).
+- `pipeline/convert_to_bids.m` and `pipeline/rebuild_erp_from_bids.m` are not
+  needed for replication; they are the tools that built the OpenNeuro dataset
+  from the original study folder.
 
 ### Step 3 — Group analyses (in this order)
 
@@ -100,7 +114,10 @@ analysis/galea_group_analysis_PPG.m   % cardiac analysis
 analysis/run_prereg_prestim_controls.m % preregistered pre-stimulus control analyses
 ```
 
-Everything writes to `results_final/`. The classification analyses read
+Everything writes to `results_final/`. `run_final_EEG_covariates.m` (and
+`run_final_TF_covariates.m`) also read the participants' questionnaire answers,
+which are not public; their outputs are included in `results_final/`. The
+classification analyses read
 `data/galea_ML_dataset.mat` (already in the repository) and archive their
 result .mat files to `results_final/ML/`.
 
