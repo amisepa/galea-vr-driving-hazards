@@ -59,8 +59,8 @@ each later step reads only what earlier steps wrote.
 ### Step 1 — Data
 
 The raw recordings are openly available in BIDS format with HED annotations at
-OpenNeuro: https://openneuro.org/datasets/ds008837 (version 1.1.2,
-doi: [10.18112/openneuro.ds008837.vv1.1.2](https://doi.org/10.18112/openneuro.ds008837.vv1.1.2)).
+OpenNeuro: https://openneuro.org/datasets/ds008837 (version 1.1.3,
+doi: [10.18112/openneuro.ds008837.v1.1.3](https://doi.org/10.18112/openneuro.ds008837.v1.1.3)).
 Each `sub-XXX/eeg` folder holds the continuous, unprocessed recordings, and
 `sourcedata/` holds the original OpenBCI files as written by the acquisition
 software. The preprocessed data are not part of the dataset; they are produced
